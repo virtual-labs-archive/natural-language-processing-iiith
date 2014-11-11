@@ -1,0 +1,311 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Natural Language Processing Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        N-Grams Smoothing
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+One major problem with standard N-gram models is that they must be trained from some corpus, and because any particular training corpus is finite, some perfectly acceptable N-grams are bound to be missing from it. We can see that bigram matrix for any given training corpus is sparse. There are large number of cases with zero probabilty bigrams and that should really have some non-zero probability. This method tend to underestimate the probability of strings that happen not to have occurred nearby in their training corpus.
+<br/><br/>
+There are some techniques that can be used for assigning a non-zero probabilty to these 'zero probability bigrams'. This task of reevaluating some of the zero-probability and low-probabilty N-grams, and assigning them non-zero values, is called smoothing.
+
+<br/><br/>
+<center><img src="Exp10/a.jpg" alt="1_alt" style="height:250px; width:600px"/></center><br/>
+<br/><br/><hr>
+        </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+<div id="experiment-article-section-2-content" 
+        class="content">
+<p>
+The standard N-gram models are trained from some corpus. The finiteness of the training corpus leads to the absence of some perfectly acceptable N-grams. This results in sparse bigram matrices. This method tend to underestimate the probability of strings that do not occur in their training corpus.
+<br/> <br/>
+There are some techniques that can be used for assigning a non-zero probabilty to these 'zero probability bigrams'. This task of reevaluating some of the zero-probability and low-probabilty N-grams, and assigning them non-zero values, is called smoothing. Some of the techniques are: Add-One Smoothing, Witten-Bell Discounting, Good-Turing Discounting.<br/><br/>
+
+<h4>Add-One Smoothing </h4><br/>
+
+In Add-One smooting, we add one to all the bigram counts before normalizing them into probabilities. This is called add-one smoothing.<br/><br/>
+
+<h4>Application on unigrams </h4></br>
+The unsmoothed maximum likelihood estimate of the unigram probability can be computed by dividing the count of the word by the total number of word tokens N
+
+<pre>
+P(w<sub>x</sub>) = c(w<sub>x</sub>)/sum<sub>i</sub>{c(w<sub>i</sub>)}
+      = c(w<sub>x</sub>)/N
+</pre>
+
+<br/>
+Let there be an adjusted count c<sup>*</sup>.<br/>
+c<sub>i</sub><sup>*</sup> = (c<sub<i</sub>+1)*N/(N+V)<br/>
+where where V is the total number of word types in the language.
+<br/>
+Now, probabilities can be calculated by normalizing counts by N.<br/>
+p<sub>i</sub><sup>*</sup> = (c<sub<i</sub>+1)/(N+V) <br/><br/>
+
+<h4>Application on bigrams </h4><br/>
+Normal bigram probabilities are computed by normalizing each row of counts by the unigram count:<br/>
+P(w<sub>n</sub>|w<sub>n-1</sub>) = C(w<sub>n-1</sub>w<sub>n</sub>)/C(w<sub>n-1</sub>)<br/><br/>
+For add-one smoothed bigram counts we need to augment the unigram count by the number of total word types in the vocabulary V:<br/>
+p<sup>*</sup>(w<sub>n</sub>|w<sub>n-1</sub>) = ( C(w<sub>n-1</sub>w<sub>n</sub>)+1 )/( C(w<sub>n-1</sub>)+V )<br/><br/><hr>
+</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+<hr><br>
+The objective of this experiment is to learn how to apply add-one smoothing on sparse bigram table.
+<br><br><hr>
+        </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+<div id="smoothing"></div>
+        </div>
+
+      </section>
+
+
+        <section id="experiment-article-section-5">
+      
+          <div id="experiment-article-section-5-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-5-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          <div id="experiment-article-section-5-content" 
+          class="content">
+<p>
+Q1. Add-one smoothing works horribly in practice because of giving too much probability mass to unseen n-grams. Prove using an example. <br/>
+Q2. In Add-&delta; smoothing, we add a small value '&delta;' to the counts instead of one. Apply Add-&delta; smoothing to the below bigram count table where &delta;=0.02.<br/><br/>
+
+<table id="quiz-smoothing" cellspacing="-2" cellpadding="4" border="1" style="text-align:center">
+<tr><td></td>
+<td><b>(eos)</b></td><td><b> John</b></td><td><b> read</b></td><td><b> Fountainhead</b></td><td><b> Mary</b></td><td><b> a</b></td><td><b> different</b></td><td><b> book</b></td><td><b> She</b></td><td><b> by</b></td><td><b> Dickens</b></td></tr><tr><td><b>(eos)</b></td><td>0</td><td>300</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td></tr><tr><td><b> John</b></td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> read</b></td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>600</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> Fountainhead</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> Mary</b></td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> a</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>300</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> different</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> book</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td></tr><tr><td><b> She</b></td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> by</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td></tr><tr><td><b> Dickens</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table><br/><p style="font-size:130%">N = 5100   V = 11</p><br/><br/>
+Q3. Given S = Dickens read a book, find P(S) <br/>
+	(a) using unsmoothed probability <br/>
+	(b) applying Add-One smoothing. <br/>
+	(c) applying Add-&delta; smoothing <br/>
+</p>
+        </section>
+
+        <section id="experiment-article-section-6">
+	  
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          <div id="experiment-article-section-6-content" 
+          class="content">
+<b><u>STEP1: </u></b>Select a corpus<br>
+<b><u>STEP2: </u></b>Apply add one smoothing and calculate bigram probabilities using the given bigram counts,N and V. Fill the table and hit <button>Submit</button><br/>
+<b><u>STEP3: </u></b>If incorrect (red), see the correct answer by clicking on show answer or repeat Step 2 <br/> <br/><hr>
+	  </div>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-7">
+   
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-7-content" 
+          class="content">
+<p><center><b>Speech and Language Processing - <i>An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition</i></b><br/>
+BY: Daniel Jurafsky and James H. Martin<br/>
+<i>Chapter 6</i></center></p>
+<br/>
+<br/>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>		
+
+</body>
+</html>

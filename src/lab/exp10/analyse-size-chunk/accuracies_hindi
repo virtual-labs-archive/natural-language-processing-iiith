@@ -1,0 +1,25 @@
+1k		CRF	only_lexicon	2k		68.9
+10k		CRF	only_lexicon	2k		80.48
+100k		CRF	only_lexicon	2k		90.9
+200k		CRF	only_lexicon	2k		92.23
+1k		CRF	only_pos	2k		90.88
+10k		CRF	only_pos	2k		95.1
+100k		CRF	only_pos	2k		96.49
+200k		CRF	only_pos	2k		97.04
+1k		CRF	lexicon_and_pos	2k		90.06
+10k		CRF	lexicon_and_pos	2k		95.45
+100k		CRF	lexicon_and_pos	2k		98.02
+200k		CRF	lexicon_and_pos	2k		98.31
+1k		HMM	only_lexicon	2k		74.14
+10k		HMM	only_lexicon	2k		80.36
+100k		HMM	only_lexicon	2k		86.14
+200k		HMM	only_lexicon	2k		87.71
+1k		HMM	only_pos	2k		85.2
+10k		HMM	only_pos	2k		86.87
+100k		HMM	only_pos	2k		87.74
+200k		HMM	only_pos	2k		87.83
+1k		HMM	lexicon_and_pos	2k		82.17
+10k		HMM	lexicon_and_pos	2k		85.19
+100k		HMM	lexicon_and_pos	2k		89.34
+200k		HMM	lexicon_and_pos	2k		90.27
+

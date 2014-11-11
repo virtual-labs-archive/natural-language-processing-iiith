@@ -1,0 +1,16 @@
+1k		CRF	bigram	30k		56.73
+10k		CRF	bigram	30k		78.48
+100k		CRF	bigram	30k		91.14
+300k		CRF	bigram	30k		94.26
+1k		CRF	trigram	30k		55.91
+10k		CRF	trigram	30k		77.87
+100k		CRF	trigram	30k		90.72
+300k		CRF	trigram	30k		94.26
+1k		HMM	bigram	30k		69.71
+10k		HMM	bigram	30k		84.77
+100k		HMM	bigram	30k		92.06
+300k		HMM	bigram	30k		93.61
+1k		HMM	trigram	30k		70.27
+10k		HMM	trigram	30k		85.28
+100k		HMM	trigram	30k		92.43
+300k		HMM	trigram	30k		93.98
