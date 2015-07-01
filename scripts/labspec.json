@@ -98,7 +98,7 @@
                 "Computer Science & Engineering"
             ], 
             "id": "cse24", 
-            "integration_level": 5, 
+            "integration_level": 6, 
             "name": "Natural Language Processing", 
             "server-side": true, 
             "status": "Released", 

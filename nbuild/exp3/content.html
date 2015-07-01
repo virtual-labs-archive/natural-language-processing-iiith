@@ -1,0 +1,353 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Natural Language Processing Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        Morphology
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+Morphology is the study of the way words are built up from smaller meaning bearing units i.e., morphemes. A morpheme is the smallest meaningful linguistic unit. For eg:<br/><br/>  
+<ul><li><b>बच्चों(bachchoM)</b>  consists of two morphemes, <i>बच्चा(bachchaa)</i> has the information of the root word noun "बच्चा"(bachchaa) and <i>ओं(oM)</i> has the information of plural and oblique case.</li><li><b>played</b> has two morphemes <i>play</i> and <i>-ed</i> having information verb "play" and "past tense", so given word is past tense form of verb "play".</li></ul><br/>
+
+
+<center><img src="Exp3/a.jpg" alt="1_alt" style="height:150px; width:150px"/></center><br/>
+Words can be analysed morphologically if we know all variants of a given root word. We can use an 'Add-Delete' table for this analysis. 
+
+
+<center><img src="Exp3/b.jpg" alt="1_alt" style="height:100px; width:380px"/></center>
+<br><br><hr>
+
+        </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+<div id="experiment-article-section-2-content" 
+        class="content">
+<b><u>Morph Analyser</u></b>
+<br/>
+<br/>
+<h4>Definition</h4>
+<p>Morphemes are considered as smallest meaningful units of language. These morphemes can either be a root word(play) or affix(-ed). Combination of these morphemes is called morphological process. So, word "played" is made out of 2 morphemes "play" and "-ed". Thus finding all parts of a word(morphemes) and thus describing properties of a word is called "Morphological Analysis". For example, "played" has information verb "play" and "past tense", so given word is past tense form of verb "play".</p><br/>
+
+<br/>
+<p>
+<h4>Analysis of a word : </h4><br/>
+</p>
+<p>
+     बच्चों (bachchoM) = बच्चा(bachchaa)<i>(root)</i> + ओं(oM)<i>(suffix)</i><br/> (ओं=3 plural oblique)<br/>
+<br/>
+A <i>linguistic paradigm</i> is the complete set of variants of a given lexeme. These variants can be classified according to shared inflectional categories (eg: number, case etc) and arranged into tables.<br/><br/><br/>
+<h4> <b>Paradigm for बच्चा</b> </h4><br/>
+<table border="1">
+<tr>
+<th> case/num </th>
+<td><b> singular</b> </td>
+<td> <b>plural </b></td>
+</tr>
+<tr>
+<td> <b>direct</b> </td>
+<td> बच्चा(bachchaa)</b> </td>
+<td> बच्चे(bachche)</b> </td>
+</tr>
+<tr>
+<td><b> oblique </b></td>
+<td> बच्चे(bachche)</b> </td><td> बच्चों (bachchoM)</b> </td>
+</tr>
+</table>
+
+</p>
+<br/><br/>
+<h4>Algorithm to get बच्चों(bachchoM)  from बच्चा(bachchaa)</h4>
+<br/>
+<ol>
+<li>Take Root बच्च(bachch)<b>आ(aa)</b></li>
+<li>Delete <b>आ(aa)</b></li>
+<li>output बच्च(bachch)</li> 
+<li>Add <b>ओं(oM) </b> to output</li>
+<li>Return बच्चों (bachchoM) </b></li>
+</ol><br/>
+
+<p> Therefore आ is deleted and ओं is added to get बच्चों  </p> <br/><br/>
+
+<h4>Add-Delete table for बच्चा</h4><br/>
+
+
+<div id="ADD-DELETE">
+
+<table cellspacing="\&quot;-2\&quot;" cellpadding="\&quot;4\&quot;" border="\&quot;1\&quot;" style="\&quot;text-align:center;\&quot;">
+<tbody><tr><th>Delete</th><th>Add</th><th>Number</th><th>Case</th><th>Variants</th></tr>
+<tr><td>आ(aa)</td><td>आ(aa)</td><td>sing</td><td>dr</td><td>बच्चा(bachchaa)</td></tr><tr><td>आ(aa)</td><td>ए(e)</td><td>plu</td><td>dr</td><td>बच्चे(bachche)</td></tr><tr><td>आ(aa)</td><td>ए(e)</td><td>sing</td><td>ob</td><td>बच्चे(bachche)</td></tr><tr><td>आ(aa)</td><td>ओं(oM)</td><td>plu</td><td>ob</td><td>बच्चों(bachchoM)</td></tr></tbody></table>
+
+</div>
+<br/>
+<h4> Paradigm Class </h4>
+<p> Words in the same paradigm class behave similarly, for Example लड़क is in the same paradigm class as बच्च, so लड़का would behave similarly as बच्चा as they share the same paradigm class.</p><br/><br/>
+
+
+<br><br><hr>
+</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+Understanding the morphology of a word by the use of Add-Delete table
+<br><br><hr>
+
+        </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+<div id="paradigm"></div>
+
+        </div>
+
+      </section>
+
+
+        <section id="experiment-article-section-5">
+      
+          <div id="experiment-article-section-5-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-5-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          <div id="experiment-article-section-5-content" 
+          class="content">
+            
+<b><u>Questions </u></b><br/><br/>
+
+Q1. Select words from this which belong to the same paradigm:
+मनुष्य(manuShya), पक्षी(pakshii), शिशु(shishu), गुरु(guruu), नर(nar) 
+<br/><br>
+Q2. Construct the paradigm table for the above words.
+<br/><br>
+Q3. Observe the following words from Bengali. Identify all the morphemes and their corresponding meanings.<br>
+kori '(I)do' <br>
+maari '(I) hit' <br>
+korchille '(You) were doing'<br>
+maar '(You) hit'
+</br>
+</br><hr>
+</div>
+
+        </section>
+
+        <section id="experiment-article-section-6">
+	  
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          <div id="experiment-article-section-6-content" 
+          class="content">
+	    <b><u>STEP1: </u></b>Select a word root.<br>
+<b><u>STEP2: </u></b>Fill the add-delete table and submit.<br>
+<b><u>STEP3: </u></b>If wrong, see the correct answer or repeat STEP1.<br>
+
+<br><br><hr>
+	  </div>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-7">
+   
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-7-content" 
+          class="content">
+<p><center><b>Natural Language Processing - <i>A Paninian Perspective</i></b><br/>
+BY: Akshar Bharti, Vineet Chaitanya and Rajeev Sangal<br/>
+<i>Chapter 3</i></center></p><br><br><hr>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>		
+
+</body>
+</html>
