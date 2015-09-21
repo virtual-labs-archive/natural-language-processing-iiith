@@ -121,7 +121,7 @@ edit -->
 
         <!-- Write the section content inside a paragraph 
         element, we can also include images with <img> tag -->
-<div id="experiment-article-section-2-content" 
+<div id="experiment-article-section-3-content" 
         class="content">
         Given the root and suffix information, a word can be generated. For example, <br><br>
 
