@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # build-dir=../build
 # lib-dir=lib
 # build-js-dir=${build-dir}/js
@@ -27,12 +28,22 @@ theme=green-icon
 
 all: ${theme}
 
+=======
+build-dir=../build
+theme=green-icon
+
+all: ${theme}
+
+>>>>>>> 08fe349ff9bfad97b6a7c4612bd98931bebbcf12
 green-icon:
 	mkdir ${build-dir};rsync -avC --progress lab/* themes/${theme}/* ${build-dir}
 clean:
 	rm -rf ${build-dir}
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 08fe349ff9bfad97b6a7c4612bd98931bebbcf12
