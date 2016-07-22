@@ -23,14 +23,19 @@
 
     <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/override.css"/>
+    <style type="text/css">
 
-    <link href="../../../css/style.css" rel="stylesheet">
-     <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    </style> 
 
-  <script src="../js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src = 'tabs.js'></script>
+	<!-- <script type="text/javascript" src='jquery.js'></script>
 	<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-    <script src="../js/jquery-1.7.1.min.js"></script>
+    <script src="../js/jquery-1.7.1.min.js"></script> -->
 
   <script type="text/javascript">
     $(document).ready(function() 
@@ -229,7 +234,7 @@ function getOption(temp){
 							
 							<!--edit -->
 <h1 class="text-h2-lightblue">Word Analysis</h1><div class="content" id="experiment-article-section-4-content">
-<table style="margin-left:0px;" width="100%">
+<table style="margin-left:0px;" width="100%" >
 <tr>
 <td align="center">
 <p style="font-style:italic;color:blue">Select a Language which you know better</p>
