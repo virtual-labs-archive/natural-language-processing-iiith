@@ -215,13 +215,19 @@ $('#display').load('experiment10-0.php?fileno='+cno);
 							<!--edit -->
 <h1 class="text-h2-lightblue">N-Grams Smoothing</h1><div class="content" id="experiment-article-section-4-content">
 <div id="smoothing">
-	<select name="corp_opt" id="corp_opt" autocomplete="off" onchange="selectCorpus(this.value);">";
-     <option value="-1" select="selected">---Select a corpus---</option>";
+	<div id="mainContainer" align="center">
 
-<option value="1">Corpus A</option>
-<option value="2">Corpus B</option>
-<option value="3">Corpus C</option>
-<option value="4">Corpus D</option></select>
+	<form name="selector" action="javascript:selectCorpus()" target="_parent" method="post">
+		<select name="corp_opt" id="corp_opt" autocomplete="off" onchange="selectCorpus(this.value);">";
+			<option value="-1" select="selected">---Select a corpus---</option>";
+			<option value="1">Corpus A</option>
+			<option value="2">Corpus B</option>
+			<option value="3">Corpus C</option>
+			<option value="4">Corpus D</option>
+		</select>
+	</form>
+<div id="display"></div>
+</div>
 </div>
 </div>						</div>
 					</div>
@@ -306,6 +312,21 @@ $('#display').load('experiment10-0.php?fileno='+cno);
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+
+	function selectCorpus(){
+var corp = document.getElementById("corp_opt");
+theIndx=corp.selectedIndex;
+corp_id=corp.options[theIndx].value;
+if(corp_id=="-1")
+	{
+		alert("Select a corpus");
+		return;
+	}
+var cno=parseFloat(corp_id);
+
+$('#display').load('experiment10-0.php?fileno='+cno);
+}
+
 	$(document).ready(function() {
 		 
 		  var owl = $("#owl-demo");

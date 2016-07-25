@@ -124,27 +124,6 @@
     });
   });
 
-var index;
-
-function getdata(lang,scr){
-	$('#fldiv').load('exp2.php?root=%&category=%&gender=%&form=%&person=%&tense=%&reference=%&lang='+lang+'&scr='+scr);
-}
-
-function getOption(temp){
-	temp1=temp.split("_");
-	lang=temp1[0];
-	scr=temp1[1];
-	document.getElementById("option").innerHTML="";
-	document.getElementById("fldiv").innerHTML="";
-	if(scr=="null")
-	{
-		alert("Select language");
-		return;
-	}
-	getdata(lang,scr);
-}
-
-
   </script>
 
 
@@ -223,21 +202,23 @@ function getOption(temp){
 						<div class="col-md-10 lab-list-col-10">
 							
 							<!--edit -->
-<h1 class="text-h2-lightblue">Word Generation</h1><div class="content" id="experiment-article-section-4-content">
+<h1 class="text-h2-lightblue">Word Generation</h1>
+<div class="content" id="experiment-article-section-4-content">
 <table width="100%">
-<tr>
+<tbody><tr>
 <td align="center">
-<select autocomplete="off" name="lang" onchange="getOption(this.value);">
-<option  selected="selected" value="null_null">---Select language---</option>
+<select name="lang" autocomplete="off" onchange="getOption(this.value);">
+<option value="null_null" selected="selected" '="">---Select language---</option>
 <option value="en_roman">English</option>
 <option value="hi_devanagiri">Hindi</option>
 </select>
 </td>
 </tr>
-</table>
+</tbody></table>
+</div>
 <br/><div align="center" id="fldiv"></div>
 <br/><div align="center" id="option"></div>
-</div>						</div>
+						</div>
 					</div>
 			</div>
 			<!-- =================================================================================================================================== -->
@@ -320,6 +301,27 @@ function getOption(temp){
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+
+	var index;
+
+function getdata(lang,scr){
+	$('#fldiv').load('exp2.php?root=%&category=%&gender=%&form=%&person=%&tense=%&reference=%&lang='+lang+'&scr='+scr);
+}
+
+function getOption(temp){
+	temp1=temp.split("_");
+	lang=temp1[0];
+	scr=temp1[1];
+	document.getElementById("option").innerHTML="";
+	document.getElementById("fldiv").innerHTML="";
+	if(scr=="null")
+	{
+		alert("Select language");
+		return;
+	}
+	getdata(lang,scr);
+}
+
 	$(document).ready(function() {
 		 
 		  var owl = $("#owl-demo");

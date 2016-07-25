@@ -220,10 +220,16 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 							<!--edit -->
 <h1 class="text-h2-lightblue">N-Grams</h1><div class="content" id="experiment-article-section-4-content">
 <div id="n-gram">
-	<div align="center">
+<div align="center">
 <form action="javascript:selectCorpus()" target="_parent" method="post">
 <select name="corpus" id="corpus">";
-<option value="1.txt">Corpus A</option><option value="2.txt">Corpus B</option><option value="9-a.jpg">Corpus C</option></select><div style="text-align:center"><br><br><input value="Select Corpus" onsubmit="selectCorpus();" type="submit"></div> 
+<option value="1.txt">Corpus A</option>
+<option value="2.txt">Corpus B</option>
+<option value="9-a.jpg">Corpus C</option>
+</select>
+<div style="text-align:center"><br><br>
+<input value="Select Corpus" onsubmit="selectCorpus();" type="submit">
+</div> 
 </form>
 <div id="display"></div>
 </div>
@@ -275,11 +281,11 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 				<a class="text-a-lightgreen"style="text-decoration: underline;" href="mailto:support@vlabs.ac.in">support@vlabs.ac.in</a>
 			</div>
 
-<<<<<<< HEAD
+
 			<div class="col-md-2 border-right-green-dotted" >
-=======
+
 				<div class="col-md-2 border-right-green-dotted" >
->>>>>>> 08fe349ff9bfad97b6a7c4612bd98931bebbcf12
+
 				<h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;"> Follow us</h2>
 				<a href="https://www.facebook.com/pages/Virtual-Labs-IIT-Delhi/301510159983871" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/fb.png"  style="border-radius: 50%;"/> </a>
 				<a href="https://twitter.com/TheVirtualLabs" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/twitter.png"  style="border-radius: 50%;"/></a>
@@ -293,10 +299,8 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 
 			</div>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 08fe349ff9bfad97b6a7c4612bd98931bebbcf12
+
  		</div>
 	</footer>
 
@@ -319,6 +323,21 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+
+	function selectCorpus(){
+var corpus = document.getElementById("corpus");
+theIndx=corpus.selectedIndex;
+corpus_name=corpus.options[theIndx].value;
+var cno=parseFloat(corpus_name);
+$('#display').load('experiment9-0.php?fileno='+cno);
+}
+
+
+function bigramTable(bigrams, order, file){
+var b=bigrams.split(",");
+var c=order.split(",");
+$('#table').load('experiment9-1.php', {bigrams:bigrams, order:order, file:file});
+}
 	$(document).ready(function() {
 		 
 		  var owl = $("#owl-demo");
