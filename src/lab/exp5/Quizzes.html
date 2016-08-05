@@ -102,15 +102,15 @@
 							<!--edit -->
 <h1 class="text-h2-lightblue">N-Grams Smoothing</h1><div class="content" id="experiment-article-section-5-content">
 <p>
-Q1. Add-one smoothing works horribly in practice because of giving too much probability mass to unseen n-grams. Prove using an example. <br/>
-Q2. In Add-δ smoothing, we add a small value 'δ' to the counts instead of one. Apply Add-δ smoothing to the below bigram count table where δ=0.02.<br/><br/>
+<b>Q1.</b> Add-one smoothing works horribly in practice because of giving too much probability mass to unseen n-grams. Prove using an example. <br/><br/>
+<b>Q2.</b> In Add-δ smoothing, we add a small value 'δ' to the counts instead of one. Apply Add-δ smoothing to the below bigram count table where δ=0.02.<br/><br/>
 <table border="1" cellpadding="4" cellspacing="-2" id="quiz-smoothing" style="text-align:center">
 <tr><td></td>
 <td><b>(eos)</b></td><td><b> John</b></td><td><b> read</b></td><td><b> Fountainhead</b></td><td><b> Mary</b></td><td><b> a</b></td><td><b> different</b></td><td><b> book</b></td><td><b> She</b></td><td><b> by</b></td><td><b> Dickens</b></td></tr><tr><td><b>(eos)</b></td><td>0</td><td>300</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td></tr><tr><td><b> John</b></td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> read</b></td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>600</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> Fountainhead</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> Mary</b></td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> a</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>300</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> different</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> book</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td></tr><tr><td><b> She</b></td><td>0</td><td>0</td><td>0</td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><b> by</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>300</td></tr><tr><td><b> Dickens</b></td><td>300</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table><br/><p style="font-size:130%">N = 5100   V = 11</p><br/><br/>
-Q3. Given S = Dickens read a book, find P(S) <br/>
-	(a) using unsmoothed probability <br/>
-	(b) applying Add-One smoothing. <br/>
-	(c) applying Add-δ smoothing <br/>
+<b>Q3.</b> Given S = Dickens read a book, find P(S) <br/>
+	<b>(a)</b> using unsmoothed probability <br/>
+	<b>(b)</b> applying Add-One smoothing. <br/>
+	<b>(c)</b> applying Add-δ smoothing <br/>
 </p>
 </div>						</div>
 					</div>
