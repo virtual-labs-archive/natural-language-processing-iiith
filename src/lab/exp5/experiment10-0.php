@@ -58,7 +58,7 @@ $size=count($o);
 ?>
 <br/> <br/>
 <p style="font-size:130%">Bigram counts for the corpus:</p><br/>
-<table cellspacing="-2" cellpadding="4" border="1" style="text-align:center;">
+<table cellspacing="2" cellpadding="8" border="1" style="text-align:center;">
 <tr><th></th>
 <?php 
 for($i=0;$i<$size;$i++)
@@ -78,7 +78,7 @@ for($k=0;$k<$size;$k++)
 echo "</table><br/>";
 echo "<p style=\"font-size:130%\">N = ".$in[0]."   V = ".$in[1]."</p><br/><br/>";
 echo "<p style=\"font-size:130%\">Fill the bigram probabilities after add-one smoothing: (Upto 4 decimal places)</p><br/>";
-echo "<table cellspacing=\"-2\" cellpadding=\"4\" border=\"1\" style=\"text-align:center;\"><br/>";
+echo "<table cellspacing=\"2\" cellpadding=\"8\" border=\"1\" style=\"text-align:center;\"><br/>";
 echo "<tr><th></th>";
 for($i=0;$i<$size;$i++)
          echo "<th>".$o[$i]."</th>";

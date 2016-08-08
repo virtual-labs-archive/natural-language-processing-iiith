@@ -7,8 +7,8 @@ function change(temp){
 	var feature=document.getElementById('feature').value;
 	if(feature=="null")
 	{
-		alert("Select Feature for Training");
-		return;
+		// alert("Select Feature for Training");
+		// return;
 	}
 	var temp1=temp.split("_");
 	document.getElementById("training-feature").innerHTML="<input type='text' value='"+feature+"' readonly>";

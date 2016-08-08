@@ -7,8 +7,8 @@ function change(temp){
 	var algo=document.getElementById('algo').value;
 	if(algo=="null")
 	{
-		alert("Select Algorithm for Training");
-		return;
+		// alert("Select Algorithm for Training");
+		// return;
 	}
 	var temp1=temp.split("_");
 	document.getElementById("training-algorithm").innerHTML="<input type='text' value='"+algo+"' readonly>";

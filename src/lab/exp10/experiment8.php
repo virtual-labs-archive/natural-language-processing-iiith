@@ -6,8 +6,8 @@ function language(lang){
 	document.getElementById("train-size").innerHTML="";
 	if(lang=="null")
 	{
-		alert("Select Language");
-		return;
+		// alert("Select Language");
+		// return;
 	}
 	$('#train-size').load('exp8.php?language='+lang);
 }

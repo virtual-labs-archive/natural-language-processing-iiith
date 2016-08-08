@@ -7,8 +7,8 @@ function change(lang){
 	var train=document.getElementById('train').value;
 	if(train=="null")
 	{
-		alert("Select Size of a corpus");
-		return;
+		// alert("Select Size of a corpus");
+		// return;
 	}
 	train=train.replace(/ /g,"");
 	document.getElementById("training-size").innerHTML="<input type='text' value='"+train+"' readonly>";
