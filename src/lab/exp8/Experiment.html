@@ -200,14 +200,22 @@ clearTimeout(timeOut);
 							<!--edit -->
 <h1 class="text-h2-lightblue">Building POS Tagger</h1>
 <div class="content" id="experiment-article-section-4-content">
-<div id="POS"></div>
-<!-- <p style="color:blue; font-style:italic">Select a language<br>
+
+<div id="POS">
+
+
+
+
+
+<p style="color:blue; font-style:italic">Select a language<br>
 <select name="lang" autocomplete="off" onclick="language(this.value);">
 <option value="null">---Select Language---</option>
 <option value="eng">English</option>
 <option value="hin">Hindi</option>
-</select></p><br><br>
-<!-- <div id="train-size"></div> -->
+</select></p><br><br><div id="train-size"></div>
+
+</div>
+<!-- <div id="train-size"></div>-->
  
 </div>						</div>
 					</div>
@@ -292,6 +300,7 @@ clearTimeout(timeOut);
 	<script src="../../../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+	
 	function language(lang){
 	document.getElementById("train-size").innerHTML="";
 	if(lang=="null")
@@ -302,7 +311,18 @@ clearTimeout(timeOut);
 	$('#train-size').load('exp7.php?language='+lang);
 }
 
-
+function change(lang){
+	document.getElementById("algorithm").innerHTML="";
+	var train=document.getElementById('train').value;
+	if(train=="null")
+	{
+		// alert("Select Size of a corpus");
+		// return;
+	}
+	train=train.replace(/ /g,"");
+	document.getElementById("training-size").innerHTML="<input type='text' value='"+train+"' readonly>";
+	$('#algorithm').load('exp7_1.php?language='+lang+'&token='+train);
+}
 	$(document).ready(function() {
 		 
 		  var owl = $("#owl-demo");

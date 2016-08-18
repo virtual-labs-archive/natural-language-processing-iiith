@@ -208,14 +208,57 @@ $('#display').load('experiment10-0.php?fileno='+cno);
 							<!--edit -->
 <h1 class="text-h2-lightblue">POS Tagging - Hidden Markov Model</h1>
 <div class="content" id="experiment-article-section-4-content">
-<div id="emission_transmission">
 	
-<select name="options" autocomplete="off" onchange="getOption(this.value);">
-<option selected="selected" value="null_null">---Select Corpus---</option>
-<option value="EOS/eos <b>Book</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus1">Corpus A</option><option value="EOS/eos <b>Book</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus2">Corpus B</option><option value="EOS/eos <b>Book</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus3">Corpus C</option>
+<div id="emission_transmission">
+
+
+
+
+
+<select name="options" autocomplete="off" onchange="getOption(this.value);"><option selected="selected" value="null_null">---Select Corpus---</option>
+<option value="EOS/eos <b>Book</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus1">Corpus A</option>
+<option value="EOS/eos <b>Book</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus2">Corpus B</option>
+<option value="EOS/eos <b>Book</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos _corpus3">Corpus C</option>
 </select><br>
-<div id="corpus" align="center"></div><br>
-<div id="fldiv" align="center"></div><br>
+<div id="corpus" align="center"><br>EOS/eos <b>Book</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>Park</b>/verb <b>a</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>book</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>the</b>/determiner <b>car</b>/noun EOS/eos <b>The</b>/determiner <b>car</b>/noun <b>is</b>/verb <b>in</b>/preposition <b>a</b>/determiner <b>park</b>/noun EOS/eos <br></div><br><div id="fldiv" align="center">
+
+<style type="text/css">
+.spmHandler {
+   background: transparent;
+   padding: 5px;
+   border: 0px ;
+
+
+}
+</style>
+
+<!-- 
+
+<table style="background-color:#FFD4A8; padding:0px; margin:0px">
+<tbody><tr>
+<th>Emission Matrix</th>
+</tr>
+<tr>
+<td align="center">
+	<table style="padding:0px; margin:0px" width="100%">
+	<tbody><tr>
+	<td></td><td align="center"><b>book</b></td><td align="center"><b>park</b></td><td align="center"><b>car</b></td><td align="center"><b>is</b></td><td align="center"><b>in</b></td><td align="center"><b>a</b></td><td align="center"><b>the</b></td></tr><tr><td align="center"><b>determiner</b></td><td align="center"><input name="e0" id="e0" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e1" id="e1" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e2" id="e2" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e3" id="e3" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e4" id="e4" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e5" id="e5" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e6" id="e6" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>noun</b></td><td align="center"><input name="e7" id="e7" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e8" id="e8" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e9" id="e9" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e10" id="e10" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e11" id="e11" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e12" id="e12" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e13" id="e13" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>verb</b></td><td align="center"><input name="e14" id="e14" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e15" id="e15" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e16" id="e16" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e17" id="e17" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e18" id="e18" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e19" id="e19" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e20" id="e20" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>preposition</b></td><td align="center"><input name="e21" id="e21" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e22" id="e22" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e23" id="e23" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e24" id="e24" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e25" id="e25" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e26" id="e26" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="e27" id="e27" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr></tbody></table>
+</td></tr></tbody></table><br><br><br><table style="background-color:#FFD4A8; padding:0px; margin:0px">
+<tbody><tr>
+<th>Transition Matrix</th>
+</tr>
+<tr>
+<td align="center"><table style="padding:0px; margin:0px" width="100%">
+	<tbody><tr>
+	<td></td><td align="center"><b>eos</b></td><td align="center"><b>determiner</b></td><td align="center"><b>noun</b></td><td align="center"><b>verb</b></td><td align="center"><b>preposition</b></td></tr><tr><td align="center"><b>eos</b></td><td align="center"><input name="t0" id="t0" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t1" id="t1" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t2" id="t2" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t3" id="t3" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t4" id="t4" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>determiner</b></td><td align="center"><input name="t5" id="t5" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t6" id="t6" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t7" id="t7" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t8" id="t8" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t9" id="t9" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>noun</b></td><td align="center"><input name="t10" id="t10" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t11" id="t11" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t12" id="t12" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t13" id="t13" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t14" id="t14" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>verb</b></td><td align="center"><input name="t15" id="t15" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t16" id="t16" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t17" id="t17" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t18" id="t18" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t19" id="t19" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr><tr><td align="center"><b>preposition</b></td><td align="center"><input name="t20" id="t20" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t21" id="t21" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t22" id="t22" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t23" id="t23" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td><td align="center"><input name="t24" id="t24" onclick="change();" style="width:30px" value="0" align="middle" type="text"></td></tr></tbody></table>
+</td>
+</tr>
+</tbody></table><br><br>
+<button onclick="checkValue('corpus2','7','5');">Check</button><br><br><div id="answer" align="center"></div>
+ -->
+
+
+</div>
 </div>
 </div>						</div>
 					</div>
