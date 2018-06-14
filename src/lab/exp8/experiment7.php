@@ -18,7 +18,7 @@ function language(lang){
 <?php
 
 echo "<p style=\"color:blue; font-style:italic\">Select a language<br/>
-<select name='lang' autocomplete='off' onclick='language(this.value);'>
+<select name='lang' autocomplete='off' onchange='language(this.value);'>
 <option value='null'>---Select Language---</option>
 <option value='eng'>English</option>
 <option value='hin'>Hindi</option>
