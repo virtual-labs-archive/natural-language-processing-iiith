@@ -11,7 +11,7 @@ function change(lang){
 		// return;
 	}
 	train=train.replace(/ /g,"");
-	document.getElementById("training-size").innerHTML="<input type='text' value='"+train+"' readonly>";
+//	document.getElementById("training-size").innerHTML="<input type='text' value='"+train+"' readonly>";
 	$('#algorithm').load('exp8_1.php?language='+lang+'&token='+train);
 }
 
