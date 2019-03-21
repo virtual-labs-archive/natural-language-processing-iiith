@@ -11,7 +11,7 @@ function change(temp){
 		// return;
 	}
 	var temp1=temp.split("_");
-	document.getElementById("training-feature").innerHTML="<input type='text' value='"+feature+"' readonly>";
+//	document.getElementById("training-feature").innerHTML="<input type='text' value='"+feature+"' readonly>";
 	feature=feature.replace(/ /g,"_");
 	$('#accuracy').load('exp8_3.php?language='+temp1[0]+'&token='+temp1[1]+'&algo='+temp1[2]+'&feature='+feature);
 }
