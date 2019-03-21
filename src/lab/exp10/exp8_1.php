@@ -11,7 +11,7 @@ function change(temp){
 		// return;
 	}
 	var temp1=temp.split("_");
-	document.getElementById("training-algorithm").innerHTML="<input type='text' value='"+algo+"' readonly>";
+//	document.getElementById("training-algorithm").innerHTML="<input type='text' value='"+algo+"' readonly>";
 	$('#features').load('exp8_2.php?language='+temp1[0]+'&token='+temp1[1]+'&algo='+algo);
 }
 
