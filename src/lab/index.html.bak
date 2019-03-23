@@ -76,7 +76,7 @@
         
         homePage=$("div#lab-header-heading a").html();
         
-	breadcrumb="<font color='white'>"+ "<a href='../index.html'>Virtual labs Home<a/> \> <a href='index.html'>" + homePage + "</a>" + "</font>";
+	breadcrumb="<font color='white'>"+ "<a href='http://vlab.co.in/'>Virtual labs Home<a/> \> <a href='index.html'>" + homePage + "</a>" + "</font>";
       
 	$("article#lab-article").prepend("<div id='lab-article-breadcrumb' class='breadcrumb'>"+ breadcrumb + "</div>");
         // $("article#lab-article div#lab-article-breadcrumb").html(breadcrumb);                  
