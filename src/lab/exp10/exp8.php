@@ -2,6 +2,7 @@
 <head>
 <script type="text/javascript" src='jquery.js'></script>
 <script type="text/javascript">
+window.scrollTo(0,document.body.scrollHeight);
 function change(lang){
 	document.getElementById("algorithm").innerHTML="";
 	var train=document.getElementById('train').value;
