@@ -10,19 +10,16 @@
     
     <title>Welcome to Virtual Labs - A MHRD Govt of india Initiative</title>
     
-     <link rel="shortcut icon" href="../images/favicon.png">
+     <link rel="shortcut icon" href="../images/favicon.ico">
     
-  
-  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+ 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
 
 	<!-- Important Owl stylesheet -->
 	<link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.css">
-	<!-- <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.css"> -->
+	<link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.css">
 	
-	<link rel="stylesheet" href="../../vendors/font-awesome/css/font-awesome.css">
-	  <link href="{{ url_for('static', filename='vendors/owl-carousel/owl.theme.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.css">
 
     <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet">
@@ -30,6 +27,7 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-67558473-1', 'auto');ga('send', 'pageview');</script>	
 </head>
 <body id="page-top" class="index">
+<p> lele periwal </p>
 <div id="top">
 	<header>
 	<!-- Navigation -->
@@ -101,13 +99,57 @@
 						<div class="col-md-10 lab-list-col-10">
 							
 							<!--edit -->
-<h1 class="text-h2-lightblue">N-Grams</h1><div class="content" id="experiment-article-section-1-content">	
-Probability of a sentence can be calculated by the probability of sequence of words occuring in it. We can use Markov assumption, that the probability of a word in a sentence depends on the probability of the word occuring just before it. Such a model is called first order Markov model or the bigram model. <br/>
-<center><img alt="1_alt" src="images/9a.jpg" style="height:50px; width:400px"/></center><br/>
+<h1 class="text-h2-lightblue">N-Grams</h1><div class="content" id="experiment-article-section-2-content">
+A combination of words forms a sentence. However, such a formation is meaningful  only when the words are arranged in some order. <br/>
+Eg:  Sit I car in the<br/>
+Such a sentence is not grammatically acceptable. However some perfectly grammatical sentences can be nonsensical too!<br/>
+Eg: Colorless green ideas sleep furiously<br/>
+One easy way to handle such unacceptable sentences is by assigning probabilities to the strings of words i.e, how likely the sentence is. <br/>
+<br/>
+<b><u> Probability of a sentence </u></b><br/>
 
-Here, W<sub>n</sub> refers to the word token corresponding to the nth word in a sequence.   
-<br><br><hr>
-</hr></br></br></div>						</div>
+If we consider each word occurring in its correct location as an independent event,the probability of the sentences is : P(w(1), w(2)..., w(n-1), w(n))<br/><br/>
+Using chain rule:<br/>
+=<b>P(</b>w(1)<b>)</b> * <b>P(</b>w(2) | w(1)<b>)</b> * <b>P(</b>w(3) | w(1)w(2)<b>)</b> ... <b>P(</b>w(n) | w(1)w(2)…w(n-1)<b>)</b><br/><br/>
+<b><u> Bigrams</u></b><br/>
+We can avoid this very long calculation by approximating  that the probability of a given word depends only on the probability of its previous words. This assumption is called Markov assumption and such a model is called Markov model- bigrams. Bigrams can be generalized to the n-gram which looks at (n-1) words in the past. A bigram is a first-order Markov model. <br/>
+
+Therefore , <br/>
+<b>P(</b>w(1), w(2)..., w(n-1), w(n)<b>)</b>= <b>P(</b>w(2)|w(1)<b>)</b> <b>P(</b>w(3)|w(2)<b>)</b> …. <b>P(</b>w(n)|w(n-1)<b>)</b><br/>
+<br/>
+We use (eos) tag to mark the beginning and end of a sentence.<br/>
+A bigram table for a given corpus can be generated and used as a lookup table for calculating probability of sentences.<br/><br/>
+
+Eg:
+ 
+Corpus – (eos) You book a flight (eos) I read a book (eos) You read (eos) <br/><br/>
+
+Bigram Table:<br/>
+<table border="1">
+<th></th><th>(eos)</th><th> you </th> <th> book </th> <th> a </th> <th> flight </th> <th> I </th> <th> read </th> 
+<tr>
+<tr>
+<th> (eos)</th><td> 0</td><td> 0.33</td><td>0</td><td> 0 </td> <td> 0 </td> <td> 0.25 </td><td> 0 </td> </tr>
+<tr>
+<th>you</th><td>0</td><td> 0 </td><td>0.5</td><td> 0 </td> <td> 0 </td> <td> 0</td> <td>0.5</td></tr>
+<tr>
+<th>book</th><td> 0.5 </td><td> 0</td><td>0</td><td> 0.5 </td> <td> 0 </td> <td> 0</td> <td>0</td></tr>
+<tr>
+<th>a</th><td> 0 </td><td> 0</td><td>0.5</td><td> 0 </td> <td> 0.5 </td> <td> 0</td> <td>0</td> </tr>
+<tr>
+<th>flight</th><td> 1 </td><td> 0</td><td>0</td><td> 0 </td> <td> 0 </td> <td> 0</td> <td>0</td> </tr>
+<tr>
+<th>I</th><td> 0 </td><td> 0</td><td>0</td><td> 0 </td> <td> 0 </td> <td> 0</td> <td>1</td> </tr>
+<tr>
+<th>read</th><td> 0.5 </td><td> 0</td><td>0</td><td> 0.5 </td> <td> 0 </td> <td> 0</td> <td>0</td> </tr>
+</tr></table>
+<br/>
+<br/>
+<b>P(</b>(eos) you read a book (eos)<b>)</b><br/>
+= <b>P(</b>you|eos<b>)</b> * <b>P(</b>read|you<b>)</b> * <b>P(</b>a|read<b>)</b> * <b>P(</b>book|a<b>)</b> * <b>P(</b>eos|book<b>)</b><br/>
+= 0.33 * 0.5 * 0.5 * 0.5 * 0.5<br/>
+=.020625<br/>
+</div>						</div>
 					</div>
 			</div>
 			<!-- =================================================================================================================================== -->
@@ -156,8 +198,9 @@ Here, W<sub>n</sub> refers to the word token corresponding to the nth word in a 
 
 
 			<div class="col-md-2 border-right-green-dotted" >
+
 				<h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;"> Follow us</h2>
-				<a href="https://www.facebook.com/pages/Virtual-Labs-IIT-Delhi/301510159983871" class="text-a-lightgreen nounderline"   target="_blank"> <img src="{{ url_for('static', filename='images/social/fb.png') }}"  style="border-radius: 50%;"/> </a>
+				<a href="https://www.facebook.com/pages/Virtual-Labs-IIT-Delhi/301510159983871" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/fb.png"  style="border-radius: 50%;"/> </a>
 				<a href="https://twitter.com/TheVirtualLabs" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/twitter.png"  style="border-radius: 50%;"/></a>
 				<a href="http://linkedin.com" class="text-a-lightgreen nounderline"  target="_blank" > <img src="../images/social/linkedin.png" style="border-radius: 50%;" /></a>
 				<a href="https://www.youtube.com/watch?v=mVBYNXLaDdg"
@@ -170,7 +213,6 @@ Here, W<sub>n</sub> refers to the word token corresponding to the nth word in a 
 			</div>
  		</div>
 	</footer>
-
 
 
 </div> <!-- top div -->

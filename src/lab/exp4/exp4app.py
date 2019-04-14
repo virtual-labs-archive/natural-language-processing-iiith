@@ -14,14 +14,30 @@ def root1():
 def root2():
     return render_template("Theory.html")
 
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
+@app.route ('/Objective.html')
+def root3():
+    return render_template("Objective.html")
 
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
+@app.route ('/Quizzes.html')
+def root4():
+    return render_template("Quizzes.html")
 
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
+@app.route ('/Experiment.html')
+def experiment ():
+    return render_template("Experiment.html")
+
+@app.route ('/Procedure.html')
+def root5():
+    return render_template("Procedure.html")
+
+@app.route ('/Further Readings.html')
+def root6():
+    return render_template("Further Readings.html")
+
+
+@app.route ('/Feedback.html')
+def root7():
+    return render_template("Feedback.html")
 
 # @app.route ('/Introduction.html')
 #     return render_template("Introduction.html")
