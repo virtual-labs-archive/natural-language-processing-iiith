@@ -44,20 +44,20 @@
   <!-- These are the stylesheets used for the lab. Please don't
   edit them; If you do, you will lose the edits in subsequent 
   releases of this User Interface. -->
-  <link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="../css/default.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
 
 
   <!-- Instead add your custom styles to override the defaults 
   coming from the above style sheets. -->
   
-  <link href="{{ url_for('static', filename='css/override.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="../css/override.css"/>
 
   <!-- ***************************************************** -->
 
   <!-- All JavaScript at the bottom, except for Modernizr which
   enables HTML5 elements & feature detects -->
-  <script type="text/javascript" src="../js/modernizr-1.5.min.js">
+  <script type="text/javascript" src="js/modernizr-1.5.min.js">
   </script>
 
   <script src="../js/jquery-1.7.1.min.js"></script>
@@ -143,26 +143,20 @@
             
 	    $("#experiment-article-sections section").hide();
 	    $("#experiment-article-sections #" + sectionId).show();
-	    $("#experiment-article-sections #" + sectionId + " #n-gram").load("experiment9.php");
+	    $("#experiment-article-sections #" + sectionId + " #smoothing").load("experiment10.php");
         });
       });		
     });
+
   });
-
-function showAns(){
-	document.getElementById("answer").style.display='block';
-	return;
-
-}
 
 function selectCorpus(){
 var corpus = document.getElementById("corpus");
 theIndx=corpus.selectedIndex;
 corpus_name=corpus.options[theIndx].value;
 var cno=parseFloat(corpus_name);
-$('#display').load('experiment9-0.php?fileno='+cno);
+$('#display').load('experiment10-0.php?fileno='+cno);
 }
-
   </script>
 <!--VLEAD Google Analytics script starts here -->
 <script>

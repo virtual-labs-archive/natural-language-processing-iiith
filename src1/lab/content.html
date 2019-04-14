@@ -1,0 +1,258 @@
+<!-- This file needs to be edited by the lab developer to suit
+their lab rquirements. -->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Natural Language Processing Lab</title>
+</head>
+
+<body>
+
+<div id="lab"> <!-- The Lab Document Container-->
+  
+  <!-- The lab Header contains the logo and the name of the lab, 
+  usually displayed on the top of the page-->
+
+  <header id="lab-header">
+    
+    <div id="lab-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="images/logo.jpg" />
+    </div>
+
+    <div id="lab-header-heading" class="heading">
+    <!-- Write the name of your lab and link it to the home page
+    of your lab. -->
+      <a href="index.html">Natural Language Processing Lab</a>	
+    </div>
+
+    <!-- Add any additional element or link you want to add to 
+    the lab header, For example : Help (Enclosing them with 
+    suitable div is recommended)-->
+  
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="lab-article">
+	
+
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+    <header id="lab-article-header">
+      
+      <!-- You can add a welcome message or title of the 
+      experiment enclosed in h1 tag here -->
+      <div id="lab-article-heading" class="heading">
+        Welcome to Natural Language Processing lab!
+      </div>
+
+      <!-- Add any additional element if required with proper 
+      enclosing-->
+    </header>
+
+
+    <!-- Navigation menu is useful to organize the view of 
+    multiple sections inside the article-->
+    <nav id="lab-article-navigation" class="default">
+      
+      <!-- The menu will be dynamically generated to contain the 
+      headings of your sections or instead write the menu items 
+      of your choice individually enclosed in <li> tag as shown 
+      below-->
+
+    </nav>
+
+    
+    <!-- All the sections of your lab or experiment can be 
+    enclosed together with a div element as shown below-->
+    <div id="lab-article-sections">
+			
+      <!-- First section of the article-->
+      <section id="lab-article-section-1">
+        <div id="lab-article-section-1-icon" class="icon">
+          <!-- Enclose the icon image for the section. -->
+	  <img src="images/theory.jpg" />
+	</div>
+
+
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+	<div id="lab-article-section-1-heading" class="heading">
+	Introduction
+	</div>
+				
+	<!-- Write the section content inside a paragraph 
+        element, You can also include images with <img> tag -->
+	<div id="lab-article-section-1-content" class="content">
+		<p>Natural Language is the language written or spoken by humans in their daily life. Natural Language Processing is an interdisciplinary field dealing with human-computer interaction and computer aided processing of human language. It combines major concepts from computer science, artificial intelligence, and linguistics.</p><br/>
+<p>The objective of Natural Language Processing lab is to introduce the students with the basics of NLP which will empower them for developing advanced NLP tools and solving practical problems in the field.</p><br/>
+<p>The experiments in this lab are arranged in a logical sequence to inculcate a new concept at every step, starting from very basic ones to advanced ones.  </p><br/>
+		<!--<p> The objective of Natural Language Processing lab is to 
+		introduce the students with the state of the art technologies 
+		and their implementation for developing NLP tools.</p>
+		<br>
+		<p>Natural Language Processing deals with issues in processing 
+		of human language by machine, using rule-based and statistical 
+		language processing techniques.
+		</p>
+		<br>
+		<p>
+		The experiments will cover some core topics for training in NLP.
+		It will include the notion of morph analysis, n-gram, smoothing, 
+		POS tagger using HMM, POS tagger using CRF++ and chunking.
+		</p>
+		<br>
+		<p>
+		For more details, visit 
+		<a href="http://ltrc.iiit.ac.in">http://ltrc.iiit    .ac.in</a>
+		</p>
+		<br>-->
+	</div>
+	
+      </section>
+		
+
+      <!-- Second section of the article-->
+      <section id="lab-article-section-2">
+        
+        <div id="lab-article-section-2-icon" class="icon">
+          <!-- Enclose the icon image for the section. -->
+	  <img src="images/simulation.jpg" />
+	</div>
+
+
+        <!-- The heading for the section can be enclosed in a 
+        div tag and shown with a <h2> tag -->
+	<div id="lab-article-section-2-heading" class="heading">
+	  List of experiments
+	</div>
+				
+	<!-- Write the section content inside a paragraph 
+        element, You can also include images with <img> tag -->
+        <div id="lab-article-section-2-content" class="content">
+	  <ul id="list-of-experiments">
+	  
+            <li> 
+	      <!--Link and name of the experiment 1 -->
+	      <a href="exp1/index.html">Word Analysis</a> 
+	    </li>
+	    <li>
+	      <a href="exp2/index.html">Word Generation</a>
+	    </li>
+	    <li> 
+	      <a href="exp3/index.html">Morphology</a> 
+	    </li>
+	    <li>
+	      <a href="exp4/index.html">N-Grams</a> 
+	    </li>
+	    <li>
+	      <a href="exp5/index.html">N-Grams Smoothing</a> 
+	    </li>
+	    <li>
+	      <a href="exp6/index.html">POS Tagging: Hidden Markov Model</a> 
+	    </li>
+	    <li>
+	      <a href="exp7/index.html">POS Tagging: Viterbi Decoding</a> 
+	    </li>
+	    <li>
+	      <a href="exp8/index.html">Building POS Tagger</a> 
+	    </li>
+	    <li>
+	      <a href="exp9/index.html">Chunking</a> 
+	    </li>
+	    <li>
+	      <a href="exp10/index.html">Building Chunker</a>
+	    </li>
+	  </ul>
+	</div>
+	
+      </section>
+
+
+      <!-- Third section of the article-->
+      <section id="lab-article-section-3">
+        <div id="lab-article-section-3-icon" class="icon">
+          <!-- Enclose the icon image for the section. -->
+	  <img src="images/introduction.jpg" />
+	</div>
+
+
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+	<div id="lab-article-section-3-heading" class="heading">
+	Target Audience
+	</div>
+				
+	<!-- Write the section content inside a paragraph 
+        element, You can also include images with <img> tag -->
+	<div id="lab-article-section-3-content" class="content">
+	<p>- PG</p>
+	<p>- Research students</p>
+	<p>- UG fourth year students</p>
+	<p>- UG third year students</p>
+	</div>
+	
+      </section>
+
+      <!-- Fourth section of the article-->
+      <section id="lab-article-section-4">
+        <div id="lab-article-section-4-icon" class="icon">
+          <!-- Enclose the icon image for the section. -->
+          <img src="images/theory.jpg" />
+        </div>
+
+
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="lab-article-section-4-heading" class="heading">
+        References
+        </div>
+
+        <!-- Write the section content inside a paragraph 
+        element, You can also include images with <img> tag -->
+        <div id="lab-article-section-4-content" class="content">
+	- Jurafsky and Martin: "Speech and Langugage Procesing", Prentice Hall, 2000.<br>
+	- Akshar Bharati, Rajeev Sangal and Vineet Chaitanya: "Natural Language Processing: A Paninian Perspective", Prentice-Hall of Indiaa
+    , New Delhi, 1995.<br>
+        </div>
+
+      </section>
+
+      </div>	
+
+      <!-- An article can have a sidebar that contain related 
+      links and additional material (it is optional at this 
+      moment)-->
+      <aside id="lab-article-sidebar" class="default">
+	<!-- put the content that you want to appear in the 
+        sidebar-->	
+      </aside>
+		
+      <!-- Article footer can display related content and 
+      additional links -->						
+      <footer id="lab-article-footer" class="default">
+	<!-- Put the content that you want to appear here-->
+      </footer>
+
+    </article>
+	
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>
+</body>
+</html>

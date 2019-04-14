@@ -1,0 +1,367 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Natural Language Processing Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        POS Tagging - Hidden Markov Model
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+<div style="font-size:15px;">
+POS tagging or part-of-speech tagging is the procedure of assigning a grammatical category like noun, verb, adjective etc. to a word. In this process both the lexical information and the context play an important role as the same lexical form can behave differently in a different context.<br><br>
+For example the word "Park" can have two different lexical categories based on the context.<br>
+<ol>
+<li>
+The boy is playing in the park. ('Park' is Noun)
+</li>
+<li>
+Park the car. ('Park' is Verb)
+</li>
+</ol>
+</div><br>
+<center>
+<img src="Exp4/hmm.jpg" alt="1_alt" height="400" width="700" .>
+
+</center>
+Assigning part of speech to words by hand is a common exercise one can find in an elementary grammar class. But here we wish to build an automated tool which can assign the appropriate part-of-speech tag to the words of a given sentence. One can think of creating hand crafted rules by observing patterns in the language, but this would limit the system's performance to the quality and number of patterns identified by the rule crafter. Thus, this approach is not practically adopted for building POS Tagger. Instead, a large corpus annotated with correct POS tags for each word is given to the computer and algorithms then learn the patterns automatically from the data and store them in form of a trained model. Later this model can be used to POS tag new sentences.<br><br>
+
+In this experiment we will explore how such a model can be learned from the data. 
+        </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+<div id="experiment-article-section-2-content" 
+        class="content">
+A Hidden Markov Model (HMM) is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobserved (hidden) states.In a regular Markov model (Markov Model (Ref: http://en.wikipedia.org/wiki/Markov_model)), the state is directly visible to the observer, and therefore the state transition probabilities are the only parameters. In a hidden Markov model, the state is not directly visible, but output, dependent on the state, is visible. 
+<br>
+<br>
+<center><img src="Exp4/hmm.jpg" height="300" width="500"/></center>
+<br>
+Hidden Markov Model has two important components-
+<br>
+<br>
+1)Transition Probabilities: The one-step transition probability is the probability of transitioning from one state to another in a single step.
+<br>
+<br>
+2)Emission Probabilties: : The output probabilities for an observation from state. Emission probabilities B = { b<sub>i,k</sub> = b<sub>i</sub>(o<sub>k</sub>) = P(o<sub>k</sub> | q<sub>i</sub>) }, where o<sub>k</sub>is an Observation. Informally, B is the probability that the output is o<sub>k</sub> given that the current state is q<sub>i</sub>
+<br><br>
+For POS tagging, it is assumed that POS are generated as random process, and each process randomly generates a word. Hence, transition matrix denotes the transition probability from one POS to another and emission matrix denotes the probability that a given word can have a particular POS. Word acts as the observations. Some of the basic assumptions are:<br/>
+<pre>1. First-order (bigram) Markov assumptions:
+	a. Limited Horizon: Tag depends only on previous tag
+		P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>1</sub>=t<sub>j1,…,ti</sub>=t<sub>ji</sub>) = P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>i</sub> = t<sub>j</sub>)
+	b. Time invariance: No change over time
+		P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>i</sub> = t<sub>j</sub>) = P(t<sub>2</sub> = t<sub>k</sub> | t<sub>1</sub> = t<sub>j</sub>) = P(t<sub>j</sub> -> t<sub>k</sub>)
+2. Output probabilities:
+	Probability of getting word wk for tag t<sub>j</sub>: P(w<sub>k</sub> | t<sub>j</sub>) is independent of other tags or words!<br>
+</pre>
+
+<u>Calculating the Probabilities </u><br><br>
+Consider the given toy corpus <br>
+<pre>EOS/eos<b> They</b>/<i>pronoun</i><b> cut</b>/<i>verb</i><b> the</b>/<i>determiner</i><b> paper</b>/<i>noun</i> EOS/eos <b>He</b>/<i>pronoun</i><b> asked</b>/<i>verb</i><b> for</b>/<i>preposition</i><b> his</b>/<i>pronoun</i><b> cut</b>/<i>noun.</i> EOS/eos<b> Put</b>/<i>verb</i><b> the</b>/<i>determiner</i><b> paper</b>/<i>noun</i><b> in</b>/<i>preposition</i><b> the</b>/<i>determiner</i><b> cut</b>/<i>noun</i> EOS/eos</pre>
+ 
+<u>Calculating Emission Probability Matrix</u><br><br>
+Count the no. of times a specific word occus with a specific POS tag in the corpus. <br>
+Here, say for <b>"cut"</b> <br>
+<pre>
+count(cut,verb)=1 
+count(cut,noun)=2
+count(cut,determiner)=0 </pre>
+... and so on zero for other tags too. <br> 
+
+<pre>count(cut) = total count of cut = 3 </pre> 
+
+Now, calculating the probability <br>
+Probability to be filled in the matrix cell at the intersection of <b>cut</b> and <b>verb</b><br>
+<pre>P(cut/verb)=count(cut,verb)/count(cut)=1/3=0.33 </pre> 
+
+Similarly, <br>
+Probability to be filled in the cell at he intersection of <b>cut</b> and <b>determiner</b><br>
+<pre>P(cut/determiner)=count(cut,determiner)/count(cut)=0/3=0</pre> 
+
+Repeat the same for all the word-tag combination and fill the  <br> <br>
+
+<u>Calculating Transition Probability Matrix</u><br><br>
+Count the no. of times a specific tag comes after other POS tags in the corpus. <br>
+Here, say for <b>"determiner"</b> <br>
+<pre>
+count(verb,determiner)=2
+count(preposition,determiner)=1
+count(determiner,determiner)=0 
+count(eos,determiner)=0
+count(noun,determiner)=0 </pre>
+... and so on zero for other tags too. <br>
+
+<pre>count(determiner) = total count of tag 'determiner' = 3 </pre>
+
+Now, calculating the probability <br>
+Probability to be filled in the cell at he intersection of <b>determiner</b>(in the column) and <b>verb</b>(in the row)<br>
+<pre>P(determiner/verb)=count(verb,determiner)/count(determiner)=2/3=0.66 </pre>
+
+Similarly, <br>
+Probability to be filled in the cell at he intersection of <b>determiner</b>(in the column) and <b>noun</b>(in the row)<br>
+<pre>P(determiner/noun)=count(noun,determiner)/count(determiner)=0/3=0</pre>
+
+Repeat the same for all the tags  <br> <br>
+Note: <b>EOS</b>/<i>eos</i> is a special marker which represents <b>End Of Sentence</b>.
+</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+<hr><br>
+The objective of the experiment is to calculate emission and transition matrix which will be helpful for tagging Parts of Speech using Hidden Markov Model.
+<br><br><hr>
+        </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+<div id="emission_transmission"></div>
+        </div>
+
+      </section>
+
+
+        <section id="experiment-article-section-5">
+      
+          <div id="experiment-article-section-5-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-5-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          <div id="experiment-article-section-5-content" 
+          class="content">
+1. How is Hidden Markov Model different from Markov Model?
+<br><br>
+2. What is the basic design for HMM for finding out POS?
+<br><br>
+3. What are the basic assumptions for the above model?
+<br><br>
+4. How does the corpus size effect the transition and emission matrix?
+<br><br>
+<hr>
+</div>
+        </section>
+
+        <section id="experiment-article-section-6">
+	  
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          <div id="experiment-article-section-6-content" 
+          class="content">
+<b><u>STEP1: </u></b>Select the corpus.<br>
+<b><u>STEP2: </u></b>For the given corpus fill the emission and transition matrix. Answers are rounded to 2 decimal digits.<br>
+<b><u>STEP3: </u></b>Press <button>Check</button> to check your answer.<br>
+
+Wrong answers are indicated by the red cell.
+<hr>
+</body>
+</html><hr>
+	  </div>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-7">
+   
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-7-content" 
+          class="content">
+<p><center><b>Speech and Language Processing - <i>An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition</i></b><br/>
+BY: Daniel Jurafsky and James H. Martin<br/>
+<i>Chapter 7</i></center></p>
+<br/>
+<br/>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>		
+
+</body>
+</html>

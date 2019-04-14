@@ -44,20 +44,20 @@
   <!-- These are the stylesheets used for the lab. Please don't
   edit them; If you do, you will lose the edits in subsequent 
   releases of this User Interface. -->
-  <link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="../css/default.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
 
 
   <!-- Instead add your custom styles to override the defaults 
   coming from the above style sheets. -->
   
-  <link href="{{ url_for('static', filename='css/override.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="../css/override.css"/>
 
   <!-- ***************************************************** -->
 
   <!-- All JavaScript at the bottom, except for Modernizr which
   enables HTML5 elements & feature detects -->
-  <script type="text/javascript" src="../js/modernizr-1.5.min.js">
+  <script type="text/javascript" src="js/modernizr-1.5.min.js">
   </script>
 
   <script src="../js/jquery-1.7.1.min.js"></script>
@@ -143,24 +143,108 @@
             
 	    $("#experiment-article-sections section").hide();
 	    $("#experiment-article-sections #" + sectionId).show();
-	    $("#experiment-article-sections #" + sectionId + " #n-gram").load("experiment9.php");
         });
       });		
     });
+
+var timeOut = window.setTimeout(function(){
+$("#paradigm").load("experiment3.php"); 
+
+
+clearTimeout(timeOut);
+
+},
+30);
+
+
   });
 
-function showAns(){
-	document.getElementById("answer").style.display='block';
-	return;
+var AddDel=new Array; 					//global variable to store the correct Add-Del table
+
+function checkCondition(){ 				//checks your answer
+
+var par = document.getElementById("mySelection");
+theIndx=par.selectedIndex;
+
+answer = new Array();					//to store your answer
+answer[0]=document.getElementById("delsingdr").value;
+answer[1]=document.getElementById("delpludr").value;
+answer[2]=document.getElementById("delsingob").value;
+answer[3]=document.getElementById("delpluob").value;
+answer[4]=document.getElementById("addsingdr").value;
+answer[5]=document.getElementById("addpludr").value;
+answer[6]=document.getElementById("addsingob").value;
+answer[7]=document.getElementById("addpluob").value;
+
+cor_answers=document.getElementById("answer").value;
+
+cor_answers=cor_answers.split(" "); 
+
+
+var ii=0;
+flag=new Array(0,0,0,0,0,0,0,0);
+flag1=0;
+paradigm=par.options[theIndx].value;
+var ind=(paradigm-1)*8+(2*paradigm);
+for (var i=ind;i<ind+8;i++)
+ { AddDel[ii]=cor_answers[i];
+//   document.write(AddDel[ii] + "<br>");
+   ii++;
+ }
+
+
+
+
+document.getElementById('check').innerHTML='<b>Correction</b>';
+
+for (i=0; i<8;i++)
+   {    if(answer[i]!=AddDel[i])
+          {    	    flag[i]=1;
+		    flag1=1;
+		    document.getElementById('check'+i%4).innerHTML='<img src="wrong.png" height="25" width="25" alt="Wrong" /> ';
+                    
+         }	
+	else if(flag[i-4]!=1)				//if the corresponding Add table is wrong dont overwrite
+		    document.getElementById('check'+i%4).innerHTML='<img src="right.png" height="25" width="25" alt="Right" /> ';	      
+  }
+
+if(flag1==1)
+      {  document.getElementById('result1').innerHTML='<br/> <p style="font-family:arial;color:red;font-size:20px;"> Error in your Add-Delete table!</p> <br/> <br/> <form action="javascript:correctTable()" > <input type="submit" value="Get Answer" onsubmit="correctTable();" /> </form><br/>';
+	 document.getElementById('result2').innerHTML=''; //clear previous value stored in this section
+	
+      }
+
+else
+      {document.getElementById('result1').innerHTML='<br/> <p style="font-family:arial;color:green;font-size:20px;"> Correct Answer! </p> <br/> <br/>';
+       document.getElementById('result2').innerHTML='';	//clear previous value stored in this section
+       document.myform3.formvar.value = answer[0];
+}
+	
 
 }
 
-function selectCorpus(){
-var corpus = document.getElementById("corpus");
-theIndx=corpus.selectedIndex;
-corpus_name=corpus.options[theIndx].value;
-var cno=parseFloat(corpus_name);
-$('#display').load('experiment9-0.php?fileno='+cno);
+function clearForm()			//clears form on selecting a different root word
+{
+        var i;
+	document.getElementById('check').innerHTML='';
+	for (i=0; i<4;i++)
+	   document.getElementById('check'+i).innerHTML='';
+	document.getElementById("addsingdr").value='आ';
+	document.getElementById("addpludr").value='आ';
+	document.getElementById("addsingob").value='आ';
+	document.getElementById("addpluob").value='आ';
+	document.getElementById("delsingdr").value='आ';
+	document.getElementById("delpludr").value='आ';
+	document.getElementById("delsingob").value='आ';   
+	document.getElementById("delpluob").value='आ';  
+	document.getElementById('result2').innerHTML=''; 
+	document.getElementById('result1').innerHTML='';   
+}
+
+function correctTable()				//prints the correct table
+{
+     document.getElementById('result2').innerHTML='<table cellspacing="-2" cellpadding="4" border="1" style="text-align:center;"><tr><th>Delete</th><th>Add</th><th>Number</th><th>Case</th></tr> <tr><td>'+ AddDel[0]+ '</td><td>'+ AddDel[4] + '</td><td>sing</td><td>dr</td> </tr><tr><td>'+ AddDel[1]+ '</td><td>'+ AddDel[5] + '</td><td>plu</td><td>dr</td> </tr><tr><td>'+ AddDel[2]+ '</td><td>'+ AddDel[6] + '</td><td>sing</td><td>ob</td> </tr><tr><td>'+ AddDel[3]+ '</td><td>'+ AddDel[7] + '</td><td>plu</td><td>ob</td> </tr></table>';
+
 }
 
   </script>

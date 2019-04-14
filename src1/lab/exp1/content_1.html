@@ -1,0 +1,362 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Natural Language Processing Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        Word Analysis
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">
+	  <div style="font-size:16px;">A word can be simple or complex. For example, 
+the word 'cat' is simple because one cannot further decompose the word into smaller part. On the other hand, the word 'cats' is complex, because the word is made up of two parts: root 'cat' and plural suffix '-s'</div>
+<br>
+<center>
+<img src="morph1.gif"/></center>
+          </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+        <div id="experiment-article-section-2-content" 
+        class="content">
+	<p>
+Analysis of words into root and affix(es) are called Morphological analysis of the word.  It is mandatory to identify root of a word for any natural language processing task. A root word can have various forms. For example, the word 'play' in English has the following forms: 'play', 'plays', 'played' and 'playing'. Hindi shows more number of forms for the word 'खेल' which is equivalent to 'play'. The forms of 'khela' are the following:</p><br>
+
+खेल, खेला, खेली, खेलुंगा, खेलुंगी, खेलेगा, खेलेगी, खेलते, खेलती, खेलने, खेलकर <br><br>
+
+For Telugu root Adadam (ఆడడం), the forms are the following::<br><br>
+
+Adutaanu, AdutunnAnu, Adenu, Ademu, AdevA, AdutAru, Adutunnaru, AdadAniki, Adesariki, AdanA, Adinxi, Adutunxi, AdinxA, AdeserA, Adestunnaru, ... <br><br>
+<p>
+Thus we understand morphological richness of one language might vary from that of another language. Indian languages are generally morphologically rich languages and therefore morphological analysis of words become a very significant task for Indian languages.</p><br>
+
+<b>Types of Morphology</b><br><br>
+
+Morphology is of two types,<br><br>
+
+   1. Inflectional morphology<br><br>
+
+      Deals with word forms of a root, where there is no change in lexical category. For example, 'played' is an inflection of the root word 'play'. Here, both 'played' and 'play' are verbs.<br>
+   2. Derivational morphology<br><br>
+
+      Deals with word forms of a root, where there is a change in the lexical category. For example, the word form 'happiness' is a derivation of the word 'happy'. Here, 'happiness' is a derived noun form of the adjective 'happy'.<br><br>
+
+<b>Morphological Features:</b><br><br>
+
+All words will have its lexical category attested during morphological analysis.<br>
+A noun and pronoun can take suffix of the following features: gender, number, person, case<br>
+For example, morphological analysis of the words are given below:<br><br>
+<pre>
+Language   input:word   output:analysis
+Hindi      लडके                     rt=लड़का, cat=n, gen=m, num=sg, case=obl 
+Hindi      लडके                     rt=लड़का, cat=n, gen=m, num=pl, case=dir 
+Hindi      लड़कों                    rt=लड़का, cat=n, gen=m, num=pl, case=obl
+</pre>
+<br><br>      
+A verb can take suffix of the following features: tense, aspect, modality, gender, number, person
+<br><br>
+<pre>
+Language   input:word    output:analysis
+Hindi      हँसी                       rt=हँस, cat=v, gen=fem, num=sg/pl, per=1/2/3 tense=past, aspect=pft 
+English    toys	         rt=toy, cat=n, num=pl, per=3    	
+</pre>
+<br>
+'gen' stands for gender. The value of gender can be masculine, feminine or neuter in Hindi. For English, it is only masculine or feminine.<br>
+'num' stands for number. The value of number can be singual (sg) or plural (pl).<br>
+'per' stands for person. The value of person can be 1, 2 or 3<br>
+The value of tense can be present, past or future.<br>
+The value of aspect can be perfecT (pft), continuous (cont) or habitual (hab).<br>
+	</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+		<hr><br>
+The objective of the experiment is to learn about morphological features of a word by analysing it.
+<br><br><hr>
+        </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+		<iframe src="experiment1.php" style="width:100%; height:700px;"></iframe>
+        </div>
+
+      </section>
+
+
+        <section id="experiment-article-section-5">
+      
+          <div id="experiment-article-section-5-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-5-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          <div id="experiment-article-section-5-content" 
+          class="content">
+		<b>1.</b> Choose a typical masculine noun, ending in ’A’, from your language. Write down its various forms along with various features and their values associated with them.
+<br><br>
+<b>2.</b> English has a suffix –en whose use is illustrated in the following lists:
+<br><pre>
+List A			List B
+red			redden
+mad			madden
+soft			soften
+wide			widen
+sharp			sharpen
+</pre>
+In regard to these data, answer the following questions:
+<br>
+A.	What part of speech does the suffix –en attach to?  That is, what is the part of speech of the words in list A?
+<br>
+B.	When the suffix –en is attached to a word, what part of speech is the resulting word?  Give some specific 
+	morphological properties of one of the words in list B, in order to justify your answer.
+<br><br>
+<b>3.</b> Take one verb from your mother tongue, gloss it (i.e., give the Engish meaning) and conjugate it in all tenses and aspects and persons. 
+<br><br>
+<b>4.</b> Refer to the following data and answer the question below:
+<br><pre>
+List 1: taller, shorter, higher, lower, smarter
+List 2: mower, teacher, sailor, caller, operator
+List 3: never, cover, finger, river
+</pre>
+Are the items spelled ‘er’/’or’ the same item in all of the words in all three lists?
+<br>
+<br>
+<b>5.</b> Identify root and suffix in the following words:
+<br>
+<pre>
+kissed
+stronger
+goodness
+teacher
+achievement
+</pre>
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-6">
+	  
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          <div id="experiment-article-section-6-content" 
+          class="content">
+		<b><u>STEP1: </u></b>Select the language.<br>
+<b><u>OUTPUT: </u></b>Drop down to select the word will appear. <br><br>
+<b><u>STEP2: </u></b>Select the word.<br>
+<b><u>OUTPUT: </u></b>Drop down for selecting features will appear.<br><br>
+<b><u>STEP3: </u></b>Select the features.<br>
+<b><u>STEP4: </u></b>Click "Check" button to check your answer.<br>
+<br>
+<b><u>OUTPUT: </u></b>Right features are marked by tick and wrong features are marked by cross.
+<br><br>
+<hr>
+	  </div>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-7">
+   
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-7-content" 
+          class="content">
+		<p><center><b>Speech and Language Processing - <i>An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition</i></b><br/>
+BY: Daniel Jurafsky and James H. Martin<br/>
+<i>Chapter 3</i></center></p>
+<p><center><b>Natural Language Processing - <i>A Paninian Perspective</i></b><br/>
+BY: Akshar Bharti, Vineet Chaitanya and Rajeev Sangal<br/>
+<i>Chapter 3</i></center></p>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>		
+
+</body>
+</html>
