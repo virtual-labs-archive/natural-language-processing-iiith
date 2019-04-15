@@ -2,6 +2,12 @@ from flask import Flask, request , render_template
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
 
+
+a = ""
+
+def get_a():
+    return a
+
 @app.route('/')
 def root():
     return render_template("Introduction.html")
@@ -22,9 +28,28 @@ def root3():
 def root4():
     return render_template("Quizzes.html")
 
+@app.route('/parse',methods=['GET','POST'])
+def rootwq():
+    global mystr1  
+    mystr1 = ""
+    mystr1+= str(request.get_data())
+#    mystr1=mystr1.split(" ")
+    mystr1=mystr1[2:-1:]
+    a = mystr1
+  #  print (mystr1)
+    print(a)
+    return mystr1
+
 @app.route ('/Experiment.html')
 def experiment ():
-    return render_template("Experiment.html")
+    global mystr1
+#    mystr1 = mystr1.split()
+    a = get_a()
+    print (a)
+    if mystr1 == "" or mystr1 ==[] or len (mystr1)==0 :
+        return render_template("Experiment.html",mystr=["dsfd","dsfdg","dfs"],n=3)
+    else: 
+        return render_template("Experiment.html",mystr=a,n=len(mystr1))
 
 @app.route ('/Procedure.html')
 def root5():
@@ -51,4 +76,5 @@ def root7():
 
 
 if __name__ == "__main__":
+    mystr1 ="" 
     app.run()

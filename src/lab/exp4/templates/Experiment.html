@@ -231,7 +231,34 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 <input value="Select Corpus" onsubmit="selectCorpus();" type="submit">
 </div> 
 </form>
-<div id="display"></div>
+<div id="display" >
+</div>
+<div id="button" style="display:none">
+	<br>
+	<button onclick="printtable()">Find Bigram Probabilities</button>
+</div>
+{% block body %}
+<div id="displaytable" style = "display:none" >
+	<br>
+	<table>
+		<tr>
+			<td></td>
+			{% for word in mystr %}
+				<th> {{word}} </th>
+			{% endfor %}
+		</tr>
+		{% for i in mystr %}	
+			<tr>
+				<th> {{ i }} </th> 
+				{% for j in range(n) %}
+				<td > <input type="text" size="3" name="0" id="0" value="0">
+				 </td>
+				{% endfor %} 
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}
 </div>
 </div>
 </div>						</div>
@@ -323,15 +350,45 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+mystr="(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you"
+mystr2="(eos) You book a car (eos) I can read a book in the park (eos) Park the car (eos) Can you read the book (eos)"
 
 	function selectCorpus(){
 var corpus = document.getElementById("corpus");
 theIndx=corpus.selectedIndex;
 corpus_name=corpus.options[theIndx].value;
 var cno=parseFloat(corpus_name);
-$('#display').load('experiment9-0.php?fileno='+cno);
+console.log (cno);
+var todisplay = document.getElementById("display")
+var todisplay1 = document.getElementById("button")
+todisplay1.style.display="block";
+if (cno==1)
+{
+	console.log("hi");
+	todisplay.innerHTML="<br><br>"+mystr+"<br>";
+}
+if (cno==2)
+{
+	console.log("hi");
+	todisplay.innerHTML="<br><br>"+mystr2 +"<br>";
+} 
+//code to make button appear
+//$('#display').load('experiment9-0.php?fileno='+cno);
 }
 
+function printtable(){
+	var toshow =document.getElementById("displaytable")
+	console.log("create table ");
+	toshow.style.display= "block";
+	$.ajax({
+		type:'POST',
+		url : "http://127.0.0.1:5000/parse",
+		data : mystr ,
+		success : function(data){
+			console.log("success")
+		}
+	});
+}
 
 function bigramTable(bigrams, order, file){
 var b=bigrams.split(",");
