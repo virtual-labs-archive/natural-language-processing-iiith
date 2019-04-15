@@ -37,6 +37,54 @@ class BigramTable (db.Model):
 db.create_all()
 
 
+class Quiztable (db.Model):
+    id = db.Column (db.Integer(),primary_key=True)
+    question = db.Column (db.String(140),nullable=False )
+    opt1= db.Column (db.String(70),nullable=False)
+    opt2= db.Column (db.String(70),nullable=False)
+    opt3= db.Column (db.String(70),nullable=False)
+    opt4= db.Column (db.String(70),nullable=False)
+    answer= db.Column (db.Integer,nullable=False)
+
+    def __init__ (self,question,opt,answer):
+        self.question = question
+        self.opt1 = opt[0]
+        self.opt2 = opt[1]
+        self.opt3 = opt[2]
+        self.opt4 = opt[3]
+        self.answer = answer 
+
+
+
+
+@app.route("/questions/create", methods= ["POST"])
+def create ():
+    question = request.form['question']
+    opt1  = (request.form['opt1'])
+    opt2  = (request.form['opt2'])
+    opt3  = (request.form['opt3'])
+    opt4  = (request.form['opt4'])
+    answer= int (request.form['answer'])
+    db.create_all()
+    neQues = Quiztable (question=question , opt=[opt1,opt2,opt3,opt4] , answer=answer  )
+    db.session.add(neQues)
+    db.session.commit()
+    temp = {
+            'question': neQues.question ,
+            'opt' : [opt1,opt2,opt3,opt4] ,
+            'answer' : neQues.answer
+            }    
+    a= json.dumps (temp )
+#    Student.query.all()
+    return jsonify(a)
+
+
+
+
+
+
+
+
 def create (): 
     sentence1= "(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos)"
     sentence1=sentence1.split()
@@ -99,7 +147,21 @@ def root3():
 
 @app.route ('/Quizzes.html')
 def root4():
-    return render_template("Quizzes.html")
+    db.create_all()
+    allques = Quiztable.query.all()
+    quesarr=[]
+    for quesa in allques :
+        l=[]
+        opt=[]
+        l.append(quesa.question)
+        opt.append(quesa.opt1)
+        opt.append(quesa.opt2)
+        opt.append(quesa.opt3)
+        opt.append(quesa.opt4)
+        l.append(opt)
+        l.append(quesa.answer)
+        quesarr.append(l)
+    return render_template("Quizzes.html",quizarr=quesarr)
 
 
 
@@ -179,7 +241,7 @@ def root6():
 def root7():
     return render_template("Feedback.html")
 
-# @a    pp.route ('/Introduction.html')
+# @app.route ('/Introduction.html')
 #     return render_template("Introduction.html")
 
 # @app.route ('/Introduction.html')
