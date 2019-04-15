@@ -235,12 +235,11 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 </div>
 <div id="button" style="display:none">
 	<br>
-	<button onclick="printtable()">Find Bigram Probabilities</button>
+	<button onclick="printtable()">Find Bigram Probabilities  </button> 
 </div>
-{% block body %}
+<!-- {% block body %} -->
 <div id="displaytable" style = "display:none" >
-	<br>
-	<table>
+		<!-- 
 		<tr>
 			<td></td>
 			{% for word in mystr %}
@@ -255,10 +254,13 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 				 </td>
 				{% endfor %} 
 			</tr>
-		{% endfor %}
-	</table>
+		{% endfor %} -->
 </div>
-{% endblock %}
+<!-- {% endblock %} -->
+<div id= "submitbut" style = "display: none">
+	<br><br><br><button onclick ="checkans()" > Submit</button>
+	<!-- <a href="/showans.html"></a> -->
+</div>
 </div>
 </div>
 </div>						</div>
@@ -352,12 +354,12 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 	<script type="text/javascript">
 mystr="(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you"
 mystr2="(eos) You book a car (eos) I can read a book in the park (eos) Park the car (eos) Can you read the book (eos)"
-
+var cno=0;
 	function selectCorpus(){
 var corpus = document.getElementById("corpus");
 theIndx=corpus.selectedIndex;
 corpus_name=corpus.options[theIndx].value;
-var cno=parseFloat(corpus_name);
+cno=parseFloat(corpus_name);
 console.log (cno);
 var todisplay = document.getElementById("display")
 var todisplay1 = document.getElementById("button")
@@ -375,21 +377,96 @@ if (cno==2)
 //code to make button appear
 //$('#display').load('experiment9-0.php?fileno='+cno);
 }
-
+var mystrh=""
 function printtable(){
 	var toshow =document.getElementById("displaytable")
 	console.log("create table ");
 	toshow.style.display= "block";
+	if (cno==1)
+	{
+		mystrh=mystr.toUpperCase();
+	}
+	else 
+	{
+		mystrh=mystr2.toUpperCase();
+	}
+	strlist=[]
+	strlist1 = mystrh.split(" ");
+	for (var p=0;p<strlist1.length;p+=1)
+	{
+		if (strlist.indexOf(strlist1[p]) ==-1)
+			strlist.push(strlist1[p])
+	}
+	console.log(strlist)
+	console.log(strlist1)
+	var txt = ""
+	txt += "<br> <table> <tr> <td></td>"
+	for (var i=0;i<strlist.length ;i+=1)
+	{
+		txt +="<th>"+ strlist[i] + "</th>"
+	}
+	txt+="</tr>"
+	var count =0
+	for (var i=0;i<strlist.length ;i+=1)
+	{
+		txt+="<tr> <th>" +strlist[i] + "</th>" 
+			for (var j=0;j<strlist.length ;j+=1)
+			{
+				txt += ' <td id = "form'+count+ 
+				'"> <input type="text" size="3" name="0" id="0" value="0"> </td>';
+				count+=1;
+			}
+			txt+="</tr> "	
+	}
+	txt+="</table>"
+	var buttons =document.getElementById("submitbut")
+	buttons.style.display="block";
+	toshow.innerHTML=txt;
 	$.ajax({
 		type:'POST',
-		url : "http://127.0.0.1:5000/parse",
-		data : mystr ,
+		url : "http://127.0.0.1:5000/Experiment1.html",
+		data : cno,
 		success : function(data){
-			console.log("success")
+			console.log(mystr)
+						if(cno-1==0){
+				for(var i=0;i<49;i++){
+					document.getElementById("form"+i.toString()).style.color="green"
+						console.log("up")
+				}
+			}
+			else{
+				for(var i=0;i<121;i++){
+					document.getElementById("form"+i.toString()).style.color="red"
+						console.log("down")
+				}
+				}
 		}
 	});
 }
 
+function checkans(){
+	cno-=1;
+	$.ajax({
+		type:'POST',
+		url : "http://127.0.0.1:5000/checkans.html",
+		data : cno.toString(),
+		success : function(data){
+			console.log("dta to print")
+			console.log(data)
+			if(cno==0){
+				for(var i=0;i<49;i++){
+					document.getElementById("form"+i).style.color="green"
+				}
+			}
+			else{
+				for(var i=0;i<121;i++){
+					document.getElementById("form"+i).style.color="red"
+				}
+				}
+		}
+	});
+	cno+=1;
+}
 function bigramTable(bigrams, order, file){
 var b=bigrams.split(",");
 var c=order.split(",");

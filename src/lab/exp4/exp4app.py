@@ -4,6 +4,82 @@ app = Flask(__name__, static_url_path='')
 
 
 
+from flask_sqlalchemy import SQLAlchemy
+
+
+from flask import json
+
+from flask import jsonify
+
+
+
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
+
+
+db = SQLAlchemy(app)
+
+class BigramTable (db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    formid = db.Column (db.Integer(),unique=False,nullable=False)
+    corpus = db.Column (db.Integer(),unique=False , nullable=False  )
+    answer = db.Column (db.String(4),unique=False ,nullable=False )
+
+    def __init__ (self,corpus,formid,answer):
+        self.corpus= corpus
+        self.formid = formid 
+        self.answer= answer 
+
+#    def __repr__(self) :
+#        return '<User %r>' % self.formid % self.answer
+
+db.create_all()
+
+
+def create (): 
+    sentence1= "(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos)"
+    sentence1=sentence1.split()
+    sentence=[]
+    for i in sentence1:
+        if i not in sentence:
+            sentence.append(i)
+    count=0 
+    corpus=0
+    for i in range(len(sentence)):
+        for j in range(len(sentence)):
+            formid=count
+            count+=1
+            counti=0
+            countt=0
+            for k in range(len(sentence1)):
+                if sentence1[k]==sentence[i]:
+                    counti+=1
+                    if sentence[j]==sentence1[i+1]:
+                        countt+=1
+            answer=float(countt)/counti
+            db.create_all()
+            newentry=BigramTable(corpus,formid,answer)
+            db.session.add(newentry)
+            db.session.commit()
+
+db.create_all()
+
+print ("exec complete")
+
+                                                            
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/')
 def root():
@@ -25,28 +101,71 @@ def root3():
 def root4():
     return render_template("Quizzes.html")
 
-@app.route('/parse',methods=['GET','POST'])
+
+
+@app.route('/parse',methods=['POST'])
 def rootwq():
-#    global mystr1  
-#    mystr1 = ""
-    mystr2 += str(request.get_data())
+    global mystr1  
+    mystr1 = ""
+    mystr1 += str(request.get_data())
 #    mystr1=mystr1.split(" ")
     mystr1=mystr1[2:-1:]
-    print (mystr2)
-    return redirect('/Experiment.html')
+    print (mystr1)
+    return mystr1
+#    return redirect('/Experiment.html')
 
-
-@app.route ('/Experiment.html')
+@app.route ('/Experiment.html',methods=['GET','POST'])
 def experiment ():
-#    global mystr1
-#    mystr1 =rootwq()
-    mystr = str(mystr2).split()
+        return render_template("Experiment.html",mystr=[],n=0)
+
+
+@app.route ('/Experiment1.html',methods=['GET','POST'])
+def experiment1 ():
+    if request.method== 'POST':
+        mystr1 = str(request.get_data())
+        print ("ok")
+        mystr1=mystr1.split()
+        print (mystr1)
+        print (len(mystr1))
+        print ("ok")
+        return render_template("Experiment1.html",mystr=mystr1,n=len(mystr1))
+    elif request.method=='GET':
+        mystr1 = str(request.get_data())
+        mystr1=mystr1.split()
+        return render_template("Experiment1.html",mystr=mystr1,n=len(mystr1))
+"""
+    global mystr1
+#   mystr1 =rootwq()
+    mystr = str(mystr1).split()
 #    print (mystr,"dfsgdfg")
     if mystr == "" or mystr ==[] or len (mystr)==0 :
         return render_template("Experiment.html",mystr=["abc","bcd","cda"],n=3)
     else: 
         return render_template("Experiment.html",mystr=mystr,n=len(mystr))
+"""
 
+"""
+@app.route ('/checkans.html',methods=['GET','POST'])
+def hello():
+    userans=""
+    cno=str(request.get_data())
+    count=0
+    if(cno==0):
+        count=7
+    else:
+        count=11
+    answers=BigramTable.query.all()
+    for i in range(count):
+        inputans=request.form['form'+str(count)]
+        for ans in answers:
+            if(str(ans.formid)==str(count) and str(ans.corpus)==str(cno)):
+                if str(ans.answer)==str(inputans):
+                    userans+='1'
+                else:
+                    userans+='0'
+    print(userans)
+    return userans
+"""
 @app.route ('/Procedure.html')
 def root5():
     return render_template("Procedure.html")
@@ -60,7 +179,7 @@ def root6():
 def root7():
     return render_template("Feedback.html")
 
-# @app.route ('/Introduction.html')
+# @a    pp.route ('/Introduction.html')
 #     return render_template("Introduction.html")
 
 # @app.route ('/Introduction.html')
