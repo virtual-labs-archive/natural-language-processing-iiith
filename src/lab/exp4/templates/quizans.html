@@ -99,43 +99,30 @@
 							
 							<!--edit -->
 <h1 class="text-h2-lightblue">N-Grams</h1><div class="content" id="experiment-article-section-5-content">
-<b><u> Questions </u></b><br><br>
+<b><u> Your Result </u></b><br><br>
 
 <div id="experiment-article-section-1-content" class="content">
-<form action="/quizans.html" method="POST" id="quizform" target="/quizans.html">
+
+<b> ANSWERS </b>
+
 {% block body %}
-	{% for i in quizarr %}
-		<p> <b>Q{{loop.index}}.</b> {{ i[0] }}.</p>
-		<ul class="multichoice">   <li>
-		<input name="quest_{{loop.index}}" type="radio" value="{{ i[1][0] }}" />  {{i[1][0]}}</li>
-		<li><input name="quest_{{loop.index}}" type="radio" value=" {{ i[1][1] }}" /> {{ i[1][1] }} </li> 
-    	<li><input name="quest_{{loop.index}}" type="radio" value="{{ i[1][2] }}" />{{ i[1][2] }}</li>
-		<li><input name="quest_{{loop.index}}" type="radio" value="{{i[1][3]}}" />{{ i[1][3] }}</li></ul>
+
+	{% for i in score %}
+		<p> <b>Q{{loop.index}}.</b> </p>
+		<p> Your answer : {{arr[loop.index-1]}} </p>
+		<p> Correct answer : {{ansarr[loop.index-1]}}</p>
+		<p> Remark : {% if i == 1 %} Correct {% endif %} {% if i == 0 %} Incorrect {% endif %}</p>
 
 	{% endfor %}
 
-	<center><input type="submit" value ="Submit"></center>
 	<br><br>
+
+	<p>Total Score = {{n}} </p>
 
 {% endblock %}
 
 </div>
 
-<center><b>SUBJECTIVE</b></center>
-<b>Q1.</b> A trigram is a second-order Markov model. Derive the formula to calculate trigram probability. Next, calculate the trigram probabilities for the given corpus.
-<center><b>(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos) </b></center>
-<br/><br/>
-
-<b>Q2.</b> A character based N-gram is a set of n consecutive characters extracted from a word. It is generally used in measuring the similarity of character strings. Some of its applications are in spellcheckers, stemming, OCR error correction, etc. <br/><br/>
-
-Given, four valid words:<br/>
-(a) quote<br/>
-(b) patient<br/>
-(c) patent<br/>
-(d) impatient<br/><br/>
-
-Calculate the probability of occurrence of each word given below. Which of these represent the correct spelling? <br/>
-(a) qotient (b) quotent (c) quotient
 <br/><br/><hr>
 </hr></br/></br/><br/></div>						</div>
 					</div>

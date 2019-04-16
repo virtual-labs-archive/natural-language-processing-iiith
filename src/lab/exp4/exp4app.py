@@ -44,7 +44,7 @@ class Quiztable (db.Model):
     opt2= db.Column (db.String(70),nullable=False)
     opt3= db.Column (db.String(70),nullable=False)
     opt4= db.Column (db.String(70),nullable=False)
-    answer= db.Column (db.Integer,nullable=False)
+    answer= db.Column (db.String(70),nullable=False)
 
     def __init__ (self,question,opt,answer):
         self.question = question
@@ -84,7 +84,7 @@ def create ():
 
 
 
-
+"""
 def create (): 
     sentence1= "(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos)"
     sentence1=sentence1.split()
@@ -114,7 +114,7 @@ def create ():
 db.create_all()
 
 print ("exec complete")
-
+"""
                                                             
 
 
@@ -239,7 +239,35 @@ def root6():
 
 @app.route ('/Feedback.html')
 def root7():
+    
     return render_template("Feedback.html")
+
+
+
+@app.route("/quizans.html",methods=['GET','POST'])
+def quizans():
+    i=1
+    n=0
+    allans=Quiztable.query.all()
+    arr=[]
+    ansarr=[]
+    score=[]
+    for ele in allans:
+        qrstr=""
+        qrstr="quest_"+str(i)
+        ansarr.append(ele.answer)
+        userans = request.form[qrstr]
+        arr.append(userans)
+        i+=1
+    for j in range(i-1):
+        if str(arr[j])==str(ansarr[j]):
+            score.append(1)
+            n+=1
+        else :
+            score.append(0)
+    print (ansarr)
+    print (arr)
+    return render_template("quizans.html",score=score,arr=arr,ansarr=ansarr,n=n)
 
 # @app.route ('/Introduction.html')
 #     return render_template("Introduction.html")
