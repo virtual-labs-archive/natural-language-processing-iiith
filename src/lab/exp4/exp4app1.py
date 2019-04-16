@@ -2,7 +2,7 @@ from flask import Flask, request ,redirect , render_template
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
 
-
+from models import BigramTable
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,19 +19,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
 db = SQLAlchemy(app)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/corpus.db'
-corpusdb = SQLAlchemy(app)
-
-class BigramTable (corpusdb.Model):
-    id = corpusdb.Column(corpusdb.Integer,primary_key=True)
-    formid = corpusdb.Column (corpusdb.Integer(),unique=False,nullable=False)
-    corpus = corpusdb.Column (corpusdb.Integer(),unique=False , nullable=False  )
-    answer = corpusdb.Column (corpusdb.String(4),unique=False ,nullable=False )
-
-    def __init__ (self,corpus,formid,answer):
-        self.corpus= corpus
-        self.formid = formid 
-        self.answer= answer 
 
 #    def __repr__(self) :
 #        return '<User %r>' % self.formid % self.answer

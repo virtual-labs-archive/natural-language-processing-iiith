@@ -237,29 +237,12 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 	<br>
 	<button onclick="printtable()">Find Bigram Probabilities  </button> 
 </div>
-<!-- {% block body %} -->
 <div id="displaytable" style = "display:none" >
-		<!-- 
-		<tr>
-			<td></td>
-			{% for word in mystr %}
-				<th> {{word}} </th>
-			{% endfor %}
-		</tr>
-		{% for i in mystr %}	
-			<tr>
-				<th> {{ i }} </th> 
-				{% for j in range(n) %}
-				<td > <input type="text" size="3" name="0" id="0" value="0">
-				 </td>
-				{% endfor %} 
-			</tr>
-		{% endfor %} -->
 </div>
-<!-- {% endblock %} -->
 <div id= "submitbut" style = "display: none">
 	<br><br><br><button onclick ="checkans()" > Submit</button>
-	<!-- <a href="/showans.html"></a> -->
+	<br><br><u><a onclick='showans()' style="cursor:pointer">Show Answer</a></u>
+
 </div>
 </div>
 </div>
@@ -352,35 +335,29 @@ $('#display').load('experiment9-0.php?fileno='+cno);
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
-mystr="(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you"
-mystr2="(eos) You book a car (eos) I can read a book in the park (eos) Park the car (eos) Can you read the book (eos)"
-var cno=0;
-	function selectCorpus(){
-var corpus = document.getElementById("corpus");
-theIndx=corpus.selectedIndex;
-corpus_name=corpus.options[theIndx].value;
-cno=parseFloat(corpus_name);
-console.log (cno);
-var todisplay = document.getElementById("display")
-var todisplay1 = document.getElementById("button")
-todisplay1.style.display="block";
-if (cno==1)
-{
-	console.log("hi");
-	todisplay.innerHTML="<br><br>"+mystr+"<br>";
-}
-if (cno==2)
-{
-	console.log("hi");
-	todisplay.innerHTML="<br><br>"+mystr2 +"<br>";
-} 
-//code to make button appear
-//$('#display').load('experiment9-0.php?fileno='+cno);
+	mystr="(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos)"
+	mystr2="(eos) You book a car (eos) I can read a book in the park (eos) Park the car (eos) Can you read the book (eos)"
+	var cno=0;
+function selectCorpus(){
+	var corpus = document.getElementById("corpus");
+	theIndx=corpus.selectedIndex;
+	corpus_name=corpus.options[theIndx].value;
+	cno=parseFloat(corpus_name);
+	var todisplay = document.getElementById("display")
+	var todisplay1 = document.getElementById("button")
+	todisplay1.style.display="block";
+	if (cno==1)
+	{
+		todisplay.innerHTML="<br><br>"+mystr+"<br>";
+	}
+	if (cno==2)
+	{
+		todisplay.innerHTML="<br><br>"+mystr2 +"<br>";
+	} 
 }
 var mystrh=""
 function printtable(){
 	var toshow =document.getElementById("displaytable")
-	console.log("create table ");
 	toshow.style.display= "block";
 	if (cno==1)
 	{
@@ -397,23 +374,21 @@ function printtable(){
 		if (strlist.indexOf(strlist1[p]) ==-1)
 			strlist.push(strlist1[p])
 	}
-	console.log(strlist)
-	console.log(strlist1)
 	var txt = ""
 	txt += "<br> <table> <tr> <td></td>"
 	for (var i=0;i<strlist.length ;i+=1)
 	{
-		txt +="<th>"+ strlist[i] + "</th>"
+		txt +="<th style='text-align:center'>"+ strlist[i] + "</th>"
 	}
 	txt+="</tr>"
 	var count =0
 	for (var i=0;i<strlist.length ;i+=1)
 	{
-		txt+="<tr> <th>" +strlist[i] + "</th>" 
+		txt+="<tr> <th style='text-align:center'>" +strlist[i] + "</th>" 
 			for (var j=0;j<strlist.length ;j+=1)
 			{
 				txt += ' <td id = "form'+count+ 
-				'"> <input type="text" size="3" name="0" id="0" value="0"> </td>';
+				'"> <input type="text" size="3" name="n'+count+'" id="n'+count+'" value="0"></td>';
 				count+=1;
 			}
 			txt+="</tr> "	
@@ -422,92 +397,57 @@ function printtable(){
 	var buttons =document.getElementById("submitbut")
 	buttons.style.display="block";
 	toshow.innerHTML=txt;
-	$.ajax({
-		type:'POST',
-		url : "http://127.0.0.1:5000/Experiment1.html",
-		data : cno,
-		success : function(data){
-			console.log(mystr)
-						if(cno-1==0){
-				for(var i=0;i<49;i++){
-					document.getElementById("form"+i.toString()).style.color="green"
-						console.log("up")
-				}
-			}
-			else{
-				for(var i=0;i<121;i++){
-					document.getElementById("form"+i.toString()).style.color="red"
-						console.log("down")
-				}
-				}
-		}
-	});
 }
 
 function checkans(){
 	cno-=1;
+	inputans={};
+	inputans["cno"]=cno;
+	if(cno==0){
+		for(var i=0;i<49;i++){
+			inputans['#n'+i]=$('#n'+i).val()
+		}
+	}
+	else{
+		for(var i=0;i<121;i++){
+			inputans['#n'+i]=$('#n'+i).val()
+		}
+	}
+	var check=cno
 	$.ajax({
 		type:'POST',
 		url : "http://127.0.0.1:5000/checkans.html",
-		data : cno.toString(),
+		data :inputans,
 		success : function(data){
-			console.log("dta to print")
-			console.log(data)
-			if(cno==0){
+			if(check==0){
 				for(var i=0;i<49;i++){
-					document.getElementById("form"+i).style.color="green"
+					if(data[i]==0)
+						document.getElementById("n"+i).style.backgroundColor="red"
+					else
+						document.getElementById("n"+i).style.backgroundColor="green"
 				}
 			}
 			else{
 				for(var i=0;i<121;i++){
-					document.getElementById("form"+i).style.color="red"
+					if(data[i]==0)
+						document.getElementById("n"+i).style.backgroundColor="red"
+					else
+						document.getElementById("n"+i).style.backgroundColor="green"
 				}
 				}
 		}
 	});
 	cno+=1;
 }
-function bigramTable(bigrams, order, file){
-var b=bigrams.split(",");
-var c=order.split(",");
-$('#table').load('experiment9-1.php', {bigrams:bigrams, order:order, file:file});
+function showans() {
+	var win;
+	if(cno==1)
+		var win = window.open('/showanswer0.html', '_blank');
+	else{
+		var win = window.open('/showanswer1.html',' _blank');
+	}
+  win.focus();
 }
-	$(document).ready(function() {
-		 
-		  var owl = $("#owl-demo");
-		  owl.owlCarousel({
-		      navigation: true,
-		      navigationText: [
-		                       "<img src='../images/left-arrow.png'>",
-		                       "<img src='../images/right-arrow.png'>"
-		                       ],
-		      /* autoPlay : 3000,
-		      stopOnHover : true */
-		  });
-		  
-		  //owl for partner institutions
-		  var owl = $("#owl-partner-institutions");
-		  owl.owlCarousel({
-		      navigation: true,
-		      navigationText: [
-		                       "<img src='../images/left-arrow.png'>",
-		                       "<img src='../images/right-arrow.png'>"
-		                       ],
-		      autoPlay : 3000,
-		      stopOnHover : true,
-		      items : 8,
-		  });
-		 
-		
-	
-	 //owl for aboutus
-	  var owl = $("#owl-aboutus");
-	  owl.owlCarousel({
-	      navigation: true,
-	      singleItem:true
-	  });
-	 
-	});
 	</script>
 	
 </html>

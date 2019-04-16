@@ -24,6 +24,126 @@
     <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet">
 	<script type="text/javascript" src = 'tabs.js'></script>
+
+    <!--<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+
+    <script src="../js/jquery-1.7.1.min.js"></script>-->
+
+  <script type="text/javascript">
+    $(document).ready(function() 
+    {		
+      //the function is called once the document loads     
+
+      $('#hidden-content').load('default.html #experiment', 
+              function(response,status,xhr)
+      {
+        //loads the default.html #lab section into the
+        //#hidden-content
+		
+        $('#container').load('content.html #experiment', 
+              function(response,status,xhr)
+        {
+          //loads the content.html #lab section into the
+	  //#container
+
+          homePage=$("div#experiment-header-heading a").html();
+          
+	  thisPage=$("article#experiment-article header#experiment-article-heading").html();
+        
+	  breadcrumb="<font color='white'>"+ "<a href='../../index.html'>Home<a/> \> <a href='../index.html'>" + homePage + "</a> \> <a href='index.html'>" + thisPage + "</a>"+ "</font>";
+        
+	  $("article#experiment-article div#experiment-article-breadcrumb").html(breadcrumb);
+				
+	  $("#container .default").each(function() 
+	  {
+            // Extracts all elements with class = "default"
+            // and top down
+            
+	    sectionId = $(this).attr('id');
+            sectionContent = $("#hidden-content #" + 
+                  sectionId).html();
+            $("#container #" + sectionId).html(sectionContent);
+	  });
+			
+	  $("#container #experiment-article-sections > section").each(function() 
+	  {
+	    // loads all the content in the respective
+	    // sections with the corresponding section headings 
+
+            sectionId = $(this).attr('id');
+	    headerId = $("#" + sectionId + "-heading").html();
+	    iconId = $("#" + sectionId + "-icon").html();
+
+	    $("#container #experiment-article-navigation ul").
+	      append("<li> <a href=\'#\' id=\'"+ sectionId + 
+              "-menu\'>" + iconId +"<br />" +
+              headerId + "</a></li>");
+	  });
+	
+	  /*			
+          $("#experiment-article-sections").after(
+            "<div id='experiment-article-sections-view'> </div>");
+	  $("#experiment-article-sections-view").html($(
+            "#experiment-article-sections section:first").html()); */
+    
+	  $("#experiment-article-sections section").hide();
+	  //hide all the experiment sections
+
+	  $("#experiment-article-sections section:first").show();
+	  //show only the first experiment section when
+	  //the experiment page loads
+	  
+	  $("#experiment-article-navigation ul > li a").live('click',
+            function()            
+          {	
+            //enables the navigation
+
+            menuId = $(this).attr('id'); 
+            // this points to the current element
+	    
+	    sectionId = menuId.replace(/-menu/i, "");
+	    /*
+	    $("#experiment-article-sections-view").html($(
+            "#experiment-article-sections #" + 
+            sectionId).html());
+	    */
+            
+	    $("#experiment-article-sections section").hide();
+	    $("#experiment-article-sections #" + sectionId).show();
+	    $("#experiment-article-sections #" + sectionId + " #n-gram").load("experiment9.php");
+        });
+      });		
+    });
+  });
+
+function showAns(){
+	document.getElementById("answer").style.display='block';
+	return;
+
+}
+
+function selectCorpus(){
+var corpus = document.getElementById("corpus");
+theIndx=corpus.selectedIndex;
+corpus_name=corpus.options[theIndx].value;
+var cno=parseFloat(corpus_name);
+$('#display').load('experiment9-0.php?fileno='+cno);
+}
+
+  </script>
+<!--VLEAD Google Analytics script starts here -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42255654-1', 'virtual-labs.ac.in');
+  ga('send', 'pageview');
+
+</script>
+
+	
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-67558473-1', 'auto');ga('send', 'pageview');</script>	
 </head>
 <body id="page-top" class="index">
@@ -46,14 +166,14 @@
 			            <!-- Collect the nav links, forms, and other content for toggling -->
 			            <div class="collapse navbar-collapse menu-div" id="bs-example-navbar-collapse-1" style="border: 0px;">
 			               
-			                <ul class="nav navbar-nav navbar-right menu-ul search-ul" style="position: relative; top: -5px;">
+			                <!-- <ul class="nav navbar-nav navbar-right menu-ul search-ul" style="position: relative; top: -5px;">
 			                	<li>
 			                		<form method="get" action="../search-result.html">
 			                        	<!-- <input type="text" class="search-textbox" placeholder="SEARCH FOR A LAB" name="q" id="q"/>
-			                        	<input type="submit" value="" class="search-button" /> -->
+			                        	<input type="submit" value="" class="search-button" /> 
 			                        </form>
 			                	</li>
-			                </ul>
+			                </ul> -->
 			                
 			             <ul class="nav navbar-nav navbar-right menu-ul">
 			                    <li class="page-scroll menu-li " >
@@ -98,7 +218,52 @@
 						<div class="col-md-10 lab-list-col-10">
 							
 							<!--edit -->
-<h1 class="text-h2-lightblue">N-Grams</h1><a href="http://feedback.vlabs.ac.in/">Feedback</a>						</div>
+<h1 class="text-h2-lightblue">N-Grams</h1><div class="content" id="experiment-article-section-4-content">
+<div id="n-gram">
+<div align="center">
+<form action="javascript:selectCorpus()" target="_parent" method="post">
+<select name="corpus" id="corpus">";
+<option value="1.txt">Corpus A</option>
+<option value="2.txt">Corpus B</option>
+<option value="9-a.jpg">Corpus C</option>
+</select>
+<div style="text-align:center"><br><br>
+<input value="Select Corpus" onsubmit="selectCorpus();" type="submit">
+</div> 
+</form>
+<div id="display" >
+</div>
+<div id="button" style="display:none">
+	<br>
+	<button onclick="printtable()">Find Bigram Probabilities  </button> 
+</div>
+<!-- {% block body %} -->
+<div id="displaytable" style = "display:none" >
+		<!-- 
+		<tr>
+			<td></td>
+			{% for word in mystr %}
+				<th> {{word}} </th>
+			{% endfor %}
+		</tr>
+		{% for i in mystr %}	
+			<tr>
+				<th> {{ i }} </th> 
+				{% for j in range(n) %}
+				<td > <input type="text" size="3" name="0" id="0" value="0">
+				 </td>
+				{% endfor %} 
+			</tr>
+		{% endfor %} -->
+</div>
+<!-- {% endblock %} -->
+<div id= "submitbut" style = "display: none">
+	<br><br><br><button onclick ="checkans()" > Submit</button>
+	<!-- <a href="/showans.html"></a> -->
+</div>
+</div>
+</div>
+</div>						</div>
 					</div>
 			</div>
 			<!-- =================================================================================================================================== -->
@@ -147,6 +312,9 @@
 
 
 			<div class="col-md-2 border-right-green-dotted" >
+
+				<div class="col-md-2 border-right-green-dotted" >
+
 				<h2 class="text-h2-lightblue-small" style="font-weight: bold;margin-top: 0px;"> Follow us</h2>
 				<a href="https://www.facebook.com/pages/Virtual-Labs-IIT-Delhi/301510159983871" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/fb.png"  style="border-radius: 50%;"/> </a>
 				<a href="https://twitter.com/TheVirtualLabs" class="text-a-lightgreen nounderline"   target="_blank"> <img src="../images/social/twitter.png"  style="border-radius: 50%;"/></a>
@@ -160,9 +328,10 @@
 
 			</div>
 
+
+
  		</div>
 	</footer>
-
 
 
 </div> <!-- top div -->
@@ -183,6 +352,126 @@
 	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
 	
 	<script type="text/javascript">
+mystr="(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you"
+mystr2="(eos) You book a car (eos) I can read a book in the park (eos) Park the car (eos) Can you read the book (eos)"
+var cno=0;
+	function selectCorpus(){
+var corpus = document.getElementById("corpus");
+theIndx=corpus.selectedIndex;
+corpus_name=corpus.options[theIndx].value;
+cno=parseFloat(corpus_name);
+console.log (cno);
+var todisplay = document.getElementById("display")
+var todisplay1 = document.getElementById("button")
+todisplay1.style.display="block";
+if (cno==1)
+{
+	console.log("hi");
+	todisplay.innerHTML="<br><br>"+mystr+"<br>";
+}
+if (cno==2)
+{
+	console.log("hi");
+	todisplay.innerHTML="<br><br>"+mystr2 +"<br>";
+} 
+//code to make button appear
+//$('#display').load('experiment9-0.php?fileno='+cno);
+}
+var mystrh=""
+function printtable(){
+	var toshow =document.getElementById("displaytable")
+	console.log("create table ");
+	toshow.style.display= "block";
+	if (cno==1)
+	{
+		mystrh=mystr.toUpperCase();
+	}
+	else 
+	{
+		mystrh=mystr2.toUpperCase();
+	}
+	strlist=[]
+	strlist1 = mystrh.split(" ");
+	for (var p=0;p<strlist1.length;p+=1)
+	{
+		if (strlist.indexOf(strlist1[p]) ==-1)
+			strlist.push(strlist1[p])
+	}
+	console.log(strlist)
+	console.log(strlist1)
+	var txt = ""
+	txt += "<br> <table> <tr> <td></td>"
+	for (var i=0;i<strlist.length ;i+=1)
+	{
+		txt +="<th>"+ strlist[i] + "</th>"
+	}
+	txt+="</tr>"
+	var count =0
+	for (var i=0;i<strlist.length ;i+=1)
+	{
+		txt+="<tr> <th>" +strlist[i] + "</th>" 
+			for (var j=0;j<strlist.length ;j+=1)
+			{
+				txt += ' <td id = "form'+count+ 
+				'"> <input type="text" size="3" name="0" id="0" value="0"> </td>';
+				count+=1;
+			}
+			txt+="</tr> "	
+	}
+	txt+="</table>"
+	var buttons =document.getElementById("submitbut")
+	buttons.style.display="block";
+	toshow.innerHTML=txt;
+	$.ajax({
+		type:'POST',
+		url : "http://127.0.0.1:5000/Experiment1.html",
+		data : cno,
+		success : function(data){
+			console.log(mystr)
+						if(cno-1==0){
+				for(var i=0;i<49;i++){
+					document.getElementById("form"+i.toString()).style.color="green"
+						console.log("up")
+				}
+			}
+			else{
+				for(var i=0;i<121;i++){
+					document.getElementById("form"+i.toString()).style.color="red"
+						console.log("down")
+				}
+				}
+		}
+	});
+}
+
+function checkans(){
+	cno-=1;
+	$.ajax({
+		type:'POST',
+		url : "http://127.0.0.1:5000/checkans.html",
+		data : cno.toString(),
+		success : function(data){
+			console.log("dta to print")
+			console.log(data)
+			if(cno==0){
+				for(var i=0;i<49;i++){
+					document.getElementById("form"+i).style.color="green"
+				}
+			}
+			else{
+				for(var i=0;i<121;i++){
+					document.getElementById("form"+i).style.color="red"
+				}
+				}
+		}
+	});
+	cno+=1;
+}
+function bigramTable(bigrams, order, file){
+var b=bigrams.split(",");
+var c=order.split(",");
+$('#table').load('experiment9-1.php', {bigrams:bigrams, order:order, file:file});
+}
 	$(document).ready(function() {
 		 
 		  var owl = $("#owl-demo");
