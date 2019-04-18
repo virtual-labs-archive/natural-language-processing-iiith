@@ -22,6 +22,12 @@ db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/corpus.db'
 corpusdb = SQLAlchemy(app)
 
+
+
+"""
+the class that stores the answer value and id of the bigram table for both the corpus 
+used to verify and generate the output of the experiment code
+"""
 class BigramTable (corpusdb.Model):
     id = corpusdb.Column(corpusdb.Integer,primary_key=True)
     formid = corpusdb.Column (corpusdb.Integer(),unique=False,nullable=False)
@@ -33,8 +39,12 @@ class BigramTable (corpusdb.Model):
         self.formid = formid 
         self.answer= answer 
 
-#    def __repr__(self) :
-#        return '<User %r>' % self.formid % self.answer
+    def __repr__(self) :
+        return '<User %r>' % self.formid % self.answer
+
+
+
+
 
 corpusdb.create_all()
 def create (): 
@@ -112,49 +122,16 @@ print ("exec complete")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 db.create_all()
 
 
 
 
+"""
+This class defines the database used for the quiz 
+every object od this class is an entry in that database and every object has the following 4 attributes 
+1 question , 4 options , and 1 correct answer 
+"""
 
 
 
@@ -176,7 +153,9 @@ class Quiztable (db.Model):
         self.opt4 = opt[3]
         self.answer = answer 
 
-
+"""
+this fuction is usedd to create / add questions for the quiz into the database so that they can be rendered directly to be displayed on the web page 
+"""
 
 
 @app.route("/questions/create", methods= ["POST"])
@@ -206,48 +185,9 @@ def create ():
 
 
 
-"""
-def create (): 
-    sentence1= "(eos) Can I sit near you (eos) You can sit (eos) Sit near him (eos) I can sit you (eos)"
-    sentence1=sentence1.split()
-    sentence=[]
-    for i in sentence1:
-        if i not in sentence:
-            sentence.append(i)
-    count=0 
-    corpus=0
-    for i in range(len(sentence)):
-        for j in range(len(sentence)):
-            formid=count
-            count+=1
-            counti=0
-            countt=0
-            for k in range(len(sentence1)):
-                if sentence1[k]==sentence[i]:
-                    counti+=1
-                    if sentence[j]==sentence1[i+1]:
-                        countt+=1
-            answer=float(countt)/counti
-            db.create_all()
-            newentry=BigramTable(corpus,formid,answer)
-            db.session.add(newentry)
-            db.session.commit()
-
-db.create_all()
-
-print ("exec complete")
-"""
+'''
+'''
                                                             
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -266,6 +206,16 @@ def root2():
 @app.route ('/Objective.html')
 def root3():
     return render_template("Objective.html")
+
+
+
+
+"""
+fetches all the entries from the quiz database 
+makes a list containing details of all objects of the class Quiztable 
+passes the created list to the webpage,
+which uses jinja templates to render it in the desirable format 
+"""
 
 @app.route ('/Quizzes.html')
 def root4():
@@ -287,16 +237,6 @@ def root4():
 
 
 """
-@app.route('/parse',methods=['POST'])
-def rootwq():
-    global mystr1  
-    mystr1 = ""
-    mystr1 += str(request.get_data())
-#    mystr1=mystr1.split(" ")
-    mystr1=mystr1[2:-1:]
-    print (mystr1)
-    return mystr1
-#    return redirect('/Experiment.html')
 """
 
 @app.route ('/Experiment.html',methods=['GET','POST'])
@@ -304,35 +244,14 @@ def experiment ():
         return render_template("Experiment.html",mystr=[],n=0)
 
 """
-@app.route ('/Experiment1.html',methods=['GET','POST'])
-def experiment1 ():
-    if request.method== 'POST':
-        mystr1 = str(request.get_data())
-        print ("ok")
-        mystr1=mystr1.split()
-        print (mystr1)
-        print (len(mystr1))
-        print ("ok")
-        return render_template("Experiment1.html",mystr=mystr1,n=len(mystr1))
-    elif request.method=='GET':
-        mystr1 = str(request.get_data())
-        mystr1=mystr1.split()
-        return render_template("Experiment1.html",mystr=mystr1,n=len(mystr1))
-
-    global mystr1
-#   mystr1 =rootwq()
-    mystr = str(mystr1).split()
-#    print (mystr,"dfsgdfg")
-    if mystr == "" or mystr ==[] or len (mystr)==0 :
-        return render_template("Experiment.html",mystr=["abc","bcd","cda"],n=3)
-    else: 
-        return render_template("Experiment.html",mystr=mystr,n=len(mystr))
+this section of the code checks the answer for each corpus 
+returns a boolean array of 0 nd 1 representing correct and incorrect answers 
 """
 
 @app.route ('/checkans.html',methods=['GET','POST'])
 def checkanswers():
     userans=""
-    print("kookokokook")
+#    print("kookokokook")
     cno=int(request.form["cno"])
     print(str(cno),type(cno))
     count=0
@@ -380,7 +299,12 @@ def root7():
     
     return render_template("Feedback.html")
 
+"""
+checks the answer for each question of the quiz 
+and returns an array of scores to a new html page 
+which generates the report using jinja templates 
 
+"""
 
 @app.route("/quizans.html",methods=['GET','POST'])
 def quizans():
@@ -417,17 +341,7 @@ def root9():
 
 
 
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
-
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
-
-# @app.route ('/Introduction.html')
-#     return render_template("Introduction.html")
-
 
 
 if __name__ == "__main__":
-    mystr2 ="hello boy hi " 
     app.run()

@@ -110,33 +110,6 @@ print ("exec complete")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 db.create_all()
 
 
@@ -144,7 +117,11 @@ db.create_all()
 
 
 
-
+"""
+This class defines the database used for the quiz 
+every object od this class is an entry in that database and every object has the following 4 attributes 
+1 question , 4 options , and 1 correct answer 
+"""
 
 class Quiztable (db.Model):
     id = db.Column (db.Integer(),primary_key=True)
@@ -165,6 +142,9 @@ class Quiztable (db.Model):
 
 
 
+"""
+this fuction is usedd to create / add questions for the quiz into the database so that they can be rendered directly to be displayed on the web page 
+"""
 
 @app.route("/questions/create", methods= ["POST"])
 def create ():
@@ -232,12 +212,6 @@ print ("exec complete")
 
 
 
-
-
-
-
-
-
 @app.route('/')
 def root():
     return render_template("Introduction.html")
@@ -253,6 +227,14 @@ def root2():
 @app.route ('/Objective.html')
 def root3():
     return render_template("Objective.html")
+
+
+"""
+fetches all the entries from the quiz database 
+makes a list containing details of all objects of the class Quiztable 
+passes the created list to the webpage,
+which uses jinja templates to render it in the desirable format 
+"""
 
 @app.route ('/Quizzes.html')
 def root4():
@@ -316,10 +298,14 @@ def experiment1 ():
         return render_template("Experiment.html",mystr=mystr,n=len(mystr))
 """
 
+
+"""
+Checks whether
+"""
 @app.route ('/checkans.html',methods=['GET','POST'])
 def checkanswers():
     userans=""
-    print("kookokokook")
+ #   print("kookokokook")
     cno=int(request.form["cno"])
     print(str(cno),type(cno))
     count=0
