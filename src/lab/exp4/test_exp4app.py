@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import unittest
 from exp4app import app,BigramTable
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test6.db'
 db = SQLAlchemy(app)
@@ -33,6 +34,8 @@ def check():
         else:
             inputans.append(0.2)
     assert checkanswers(0,inputans)=="1101111010001010101010101000101010000010100010101"
+    if checkanswers(0,inputans)=="1101111010001010101010101000101010000010100010101":
+        print ("ran first test , OK ")
     inputans=[]
     for i in range(121):
         if(i%2==0):
@@ -40,5 +43,11 @@ def check():
         else:
             inputans.append(0.2)
     assert checkanswers(1,inputans)=="1110110010001010100010001010100010101010101000101010101010101010101010101010101000101000101010101010101010101000101010101"
+    if checkanswers(1,inputans)=="1110110010001010100010001010100010101010101000101010101010101010101010101010101000101000101010101010101010101000101010101":
+        print ("ran 2 test , OK ")
 
 check()
+"""
+if __name__=='__main__':
+    unittest.main()
+"""
