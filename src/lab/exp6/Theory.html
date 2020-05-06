@@ -111,6 +111,7 @@
             </nav>
         </header>
 
+
         <div id="content">
             <div class="container-fluid">
                 <div class="row">
@@ -118,10 +119,12 @@
                 </div>
                 <!-- row end -->
             </div>
-            <!-- container-fluid end for slider -->
+            <!-- container-fluid end for slider --> 
+
 
             <!-- =================================================================================================================================== -->
-            <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
+
+<div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
                 <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
 
                 <div class="row">
@@ -155,6 +158,8 @@
                             <h3 class="text-h3-darkblue" style="margin-top: 2px;"> Feedback </h3> </a>
                     </div>
 
+
+
                     <div class="col-md-10 lab-list-col-10">
 
                         <!--edit -->
@@ -172,20 +177,47 @@
                             <br/>
                             <br/> For POS tagging, it is assumed that POS are generated as random process, and each process randomly generates a word. Hence, transition matrix denotes the transition probability from one POS to another and emission matrix denotes the probability that a given word can have a particular POS. Word acts as the observations. Some of the basic assumptions are:
                             <br/>
-                            <pre>1. First-order (bigram) Markov assumptions:
+
+<pre>1. First-order (bigram) Markov assumptions:
 	a. Limited Horizon: Tag depends only on previous tag
 		P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>1</sub>=t<sub>j1,âŚ,ti</sub>=t<sub>ji</sub>) = P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>i</sub> = t<sub>j</sub>)
 	b. Time invariance: No change over time
 		P(t<sub>i+1</sub> = t<sub>k</sub> | t<sub>i</sub> = t<sub>j</sub>) = P(t<sub>2</sub> = t<sub>k</sub> | t<sub>1</sub> = t<sub>j</sub>) = P(t<sub>j</sub> -&gt; t<sub>k</sub>)
 2. Output probabilities:
 	Probability of getting word wk for tag t<sub>j</sub>: P(w<sub>k</sub> | t<sub>j</sub>) is independent of other tags or words!<br/>
-<br/></pre>
-                            <u>Calculating the Probabilities </u>
-                            <br/>
+  <br/></pre>
+
+<u>Calculating the Probabilities </u>
+<br/>
                             <br/> Consider the given toy corpus
                             <br/>
-                            <pre>EOS/eos<b> They</b>/<i>pronoun</i><b> cut</b>/<i>verb</i><b> the</b>/<i>determiner</i><b> paper</b>/<i>noun</i> EOS/eos <b>He</b>/<i>pronoun</i><b> asked</b>/<i>verb</i><b> for</b>/<i>preposition</i><b> his</b>/<i>pronoun</i><b> cut</b>/<i>noun.</i> EOS/eos<b> Put</b>/<i>verb</i><b> the</b>/<i>determiner</i><b> paper</b>/<i>noun</i><b> in</b>/<i>preposition</i><b> the</b>/<i>determiner</i><b> cut</b>/<i>noun</i> EOS/eos</pre>
-                            <u>Calculating Emission Probability Matrix</u>
+                            <pre> EOS/eos<b>
+                            They</b>/<i>pronoun</i><b>
+                            cut</b>/<i>verb</i><b>
+                            the</b>/<i>determiner</i><b>
+                            paper</b>/<i>noun</i>
+                              EOS/eos <b>He</b>/<i>pronoun</i>
+                              <b> asked</b>/<i>verb</i><b>
+                                for</b>/<i>preposition</i>
+                              <b> his</b>/<i>pronoun</i><b>
+                              cut</b>/<i>noun.</i>
+                              EOS/eos<b>
+                              Put</b>/<i>verb</i><b>
+                              the</b>/<i>determiner</i>
+
+                              <b> paper</b>/<i>noun</i><b>
+                              in</b>/<i>preposition</i><b>
+                              the</b>/<i>determiner</i><b>
+                              cut</b>/<i>noun</i>
+                              EOS/eos</pre>
+                            
+
+
+
+                            
+
+
+<u>Calculating Emission Probability Matrix</u>
                             <br/>
                             <br/> Count the no. of times a specific word occus with a specific POS tag in the corpus.
                             <br/> Here, say for <b>"cut"</b>
@@ -194,6 +226,8 @@
 count(cut,noun)=2
 count(cut,determiner)=0 </pre> ... and so on zero for other tags too.
                             <br/>
+
+
                             <pre>count(cut) = total count of cut = 3 </pre> Now, calculating the probability
                             <br/> Probability to be filled in the matrix cell at the intersection of <b>cut</b> and <b>verb</b>
                             <br/>
@@ -203,7 +237,7 @@ count(cut,determiner)=0 </pre> ... and so on zero for other tags too.
                             <pre>P(cut/determiner)=count(cut,determiner)/count(cut)=0/3=0</pre> Repeat the same for all the word-tag combination and fill the
                             <br/>
                             <br/>
-                            <u>Calculating Transition Probability Matrix</u>
+<u>Calculating Transition Probability Matrix</u>
                             <br/>
                             <br/> Count the no. of times a specific tag comes after other POS tags in the corpus.
                             <br/> Here, say for <b>"determiner"</b>
@@ -225,10 +259,13 @@ count(noun,determiner)=0 </pre> ... and so on zero for other tags too.
                             <br/> Note: <b>EOS</b>/<i>eos</i> is a special marker which represents <b>End Of Sentence</b>.
                             <br/>
                             <br/>
+                            
+                            
                         </div>
                     </div>
-                </div>
-            </div>
+                    
+</div></div>
+            
             <!-- =================================================================================================================================== -->
 
         </div>
@@ -326,6 +363,8 @@ count(noun,determiner)=0 </pre> ... and so on zero for other tags too.
 
         });
     </script>-->
+
+
 
 
 
