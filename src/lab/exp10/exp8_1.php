@@ -4,6 +4,7 @@
 
 <script type="text/javascript" src='jquery.js'></script>
 <script type="text/javascript">
+window.scrollTo(0,document.body.scrollHeight);
 function change(temp){
 	document.getElementById("features").innerHTML="";
 	var algo=document.getElementById('algo').value;

@@ -4,6 +4,7 @@
 
 <script type="text/javascript" src='jquery.js'></script>
 <script type="text/javascript">
+window.scrollTo(0,document.body.scrollHeight);
 function getAccuracy(accuracy){
 	document.getElementById("accuracy_ans").innerHTML="<b>Accuracy is: </b>"+accuracy;
 }
