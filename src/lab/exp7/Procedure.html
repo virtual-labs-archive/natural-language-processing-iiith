@@ -122,7 +122,7 @@
 
             <!-- =================================================================================================================================== -->
             <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
-                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../List of experiments.html"> Experiments</a><br/></h2>
+                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "> <a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
 
                 <div class="row">
                     <div class="col-md-2 sidebar-col-2">
@@ -182,8 +182,7 @@
 						Lab">
                             <h3 class="text-h3-darkblue" style="margin-top:
 						2px;">
-						Further
-						Readings </h3> </a>
+						Further	Readings </h3> </a>
                         <a class="sidebar-a" href="Feedback.html?domain=Computer
 						Science&amp;lab=Natural
 						Language
@@ -199,28 +198,21 @@
                         <!--edit -->
                         <h1 class="text-h1-lightblue">POS Tagging - Viterbi Decoding</h1>
                         <div class="content" id="experiment-article-section-6-content">
-                            <b><u>STEP1: </u></b>Select the corpus.
+                            <p><b>STEP1:</b>Select the corpus.</p>
                             <br/>
-                            <b><u>OUTPUT: </u></b>Emission and Transmission matrix will appear.
+                            <p><b>OUTPUT: </b>Emission and Transmission matrix will appear.</p>
                             <br/>
+                            <p><b>STEP2: </b>Fill the column with the probabilty of possible POS tags given the word (i.e. form the viterbi matrix by filling colum for each observation). Answers submitted are rounded off to 3 digits after decimal and are than checked.</p>
                             <br/>
-                            <b><u>STEP2: </u></b>Fill the column with the probabilty of possible POS tags given the word (i.e. form the viterbi matrix by filling colum for each observation). Answers submitted are rounded off to 3 digits after decimal and are than checked.
+                            <p><b>STEP3: </b>Check the column.</p>
+                            <br/> 
+                            <p>Wrong answers are indicated by red backgound in a cell.</p>
                             <br/>
+                            <b> If answers are right, then go to step2</b>
                             <br/>
-                            <b><u>STEP3: </u></b>Check the column.
-                            <br/> Wrong answers are indicated by red backgound in a cell.
-                            <br/> If answers are right, then go to step2
+                            <p><b>STEP4: </b>Repeat steps 2 and 3 untill all words of a sentence are covered.</p>
                             <br/>
-                            <br/>
-                            <b><u>STEP4: </u></b>Repeat steps 2 and 3 untill all words of a sentence are covered.
-                            <br/>
-                            <br/>
-                            <b><u>STEP5: </u></b>At last check the POS tag for each word obtained from backtracking
-                            <br/>
-                            <br/>
-                            <hr/>
-                            <br/>
-                            <br/>
+                            <p><b>STEP5: </b>At last check the POS tag for each word obtained from backtracking</p>
                             <br/>
                         </div>
                     </div>

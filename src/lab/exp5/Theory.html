@@ -122,7 +122,7 @@
 
             <!-- =================================================================================================================================== -->
             <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
-                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
+                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
 
                 <div class="row">
                     <div class="col-md-2 sidebar-col-2">
@@ -161,14 +161,14 @@
                         <h1 class="text-h1-lightblue">N-Grams Smoothing</h1>
                         <div class="content" id="experiment-article-section-2-content">
                             <p>
-                                The standard N-gram models are trained from some corpus. The finiteness of the training corpus leads to the absence of some perfectly acceptable N-grams. This results in sparse bigram matrices. This method tend to underestimate the probability of strings that do not occur in their training corpus.
+                                The standard N-gram models are trained from some corpus. The finiteness of the training corpus leads to the absence of some perfectly acceptable N-grams. This results in sparse bigram matrices. This method tend to underestimate the probability of strings that do not occur in their training corpus.</p>
                                 <br/>
                                 <br/> There are some techniques that can be used for assigning a non-zero probabilty to these 'zero probability bigrams'. This task of reevaluating some of the zero-probability and low-probabilty N-grams, and assigning them non-zero values, is called smoothing. Some of the techniques are: Add-One Smoothing, Witten-Bell Discounting, Good-Turing Discounting.
                                 <br/>
                                 <br/>
                             </p>
                             <h4>Add-One Smoothing </h4>
-                            <br/> In Add-One smooting, we add one to all the bigram counts before normalizing them into probabilities. This is called add-one smoothing.
+                            <br/> <p>In Add-One smooting, we add one to all the bigram counts before normalizing them into probabilities. This is called add-one smoothing.</p>
                             <br/>
                             <br/>
                             <h4>Application on unigrams </h4> The unsmoothed maximum likelihood estimate of the unigram probability can be computed by dividing the count of the word by the total number of word tokens N
@@ -179,12 +179,12 @@
                             <br/> Let there be an adjusted count c<sup>*</sup>.
                             <br/> c
                             <sub>i</sub><sup>*</sup> = (c
-                            <sub<i< sub="">+1)*N/(N+V)
+                            <sub><i>< sub="">+1)*N/(N+V)
                                 <br/> where where V is the total number of word types in the language.
                                 <br/> Now, probabilities can be calculated by normalizing counts by N.
                                 <br/> p
                                 <sub>i</sub><sup>*</sup> = (c
-                                <sub<i< sub="">+1)/(N+V)
+                                <sub><i>< sub="">+1)/(N+V)
                                     <br/>
                                     <br/>
                                     <h4>Application on bigrams </h4>
@@ -198,7 +198,7 @@
                                     <br/>
                                     <br/>
                                     <hr/>
-                                </sub<i<></sub<i<>
+                                </sub><i></sub><i>
                             <p></p>
                         </div>
                     </div>

@@ -124,8 +124,8 @@
 
             <!-- =================================================================================================================================== -->
 
-<div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
-                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
+            <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
+                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "> <a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>    
 
                 <div class="row">
                     <div class="col-md-2 sidebar-col-2">
@@ -165,17 +165,20 @@
                         <!--edit -->
                         <h1 class="text-h1-lightblue">POS Tagging - Hidden Markov Model</h1>
                         <div class="content" id="experiment-article-section-2-content">
-                            A Hidden Markov Model (HMM) is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobserved (hidden) states.In a regular Markov model (Markov Model (Ref: http://en.wikipedia.org/wiki/Markov_model)), the state is directly visible to the observer, and therefore the state transition probabilities are the only parameters. In a hidden Markov model, the state is not directly visible, but output, dependent on the state, is visible.
-                            <br/>
+                           <p> A Hidden Markov Model (HMM) is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobserved (hidden) states.In a regular Markov model (Markov Model (Ref: http://en.wikipedia.org/wiki/Markov_model)), the state is directly visible to the observer, and therefore the state transition probabilities are the only parameters. In a hidden Markov model, the state is not directly visible, but output, dependent on the state, is visible.</p>
                             <br/>
                             <center><img height="300" src="Exp4/hmm.jpg" width="500"/></center>
-                            <br/> Hidden Markov Model has two important components-
+                            <br/> 
+                            <p>Hidden Markov Model has two important components-</p>
+                            
                             <br/>
-                            <br/> 1)Transition Probabilities: The one-step transition probability is the probability of transitioning from one state to another in a single step.
+                            <p> 1)Transition Probabilities: The one-step transition probability is the probability of transitioning from one state to another in a single step.</p>
+                            
                             <br/>
-                            <br/> 2)Emission Probabilties: : The output probabilities for an observation from state. Emission probabilities B = { b<sub>i,k</sub> = b<sub>i</sub>(o<sub>k</sub>) = P(o<sub>k</sub> | q<sub>i</sub>) }, where o<sub>k</sub>is an Observation. Informally, B is the probability that the output is o<sub>k</sub> given that the current state is q<sub>i</sub>
+                            <p> 2)Emission Probabilties: : The output probabilities for an observation from state. Emission probabilities B = { b<sub>i,k</sub> = b<sub>i</sub>(o<sub>k</sub>) = P(o<sub>k</sub> | q<sub>i</sub>) }, where o<sub>k</sub>is an Observation. Informally, B is the probability that the output is o<sub>k</sub> given that the current state is q<sub>i</sub></p>
+                            
                             <br/>
-                            <br/> For POS tagging, it is assumed that POS are generated as random process, and each process randomly generates a word. Hence, transition matrix denotes the transition probability from one POS to another and emission matrix denotes the probability that a given word can have a particular POS. Word acts as the observations. Some of the basic assumptions are:
+                            <p> For POS tagging, it is assumed that POS are generated as random process, and each process randomly generates a word. Hence, transition matrix denotes the transition probability from one POS to another and emission matrix denotes the probability that a given word can have a particular POS. Word acts as the observations. Some of the basic assumptions are:</p>
                             <br/>
 
 <pre>1. First-order (bigram) Markov assumptions:
@@ -211,10 +214,7 @@
                               cut</b>/<i>noun</i>
                               EOS/eos</pre>
                             
-
-
-
-                            
+                        
 
 
 <u>Calculating Emission Probability Matrix</u>
