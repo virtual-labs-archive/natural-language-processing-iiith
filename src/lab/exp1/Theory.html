@@ -41,6 +41,13 @@
     <link href="../css/style.css" rel="stylesheet"/>
 <!--    <link href="../css/style-main.scss" rel="stylesheet"/>
     <script src="../js/tabs.js" type="text/javascript"></script>-->
+    <style type="text/css">
+        td{
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+}
+    </style>
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -122,7 +129,7 @@
 
             <!-- =================================================================================================================================== -->
             <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
-                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "><a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i><a class="sidebar-a" href="../List of experiments.html"> Experiments</a><br/></h2>
+                <h2 class="text-h2-lightblue" style=" margin-bottom: 20px; margin-top: 10px; "> <a class="sidebar-a" href="http://vlab.co.in/broad-area-computer-science-and-engineering">Computer Science &amp; Engineering</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../Introduction.html">Natural Language Processing Lab</a> <i aria-hidden="true" class="fa fa-angle-right" style="font-size: 30px;padding-right: 4px;padding-left: 4px;"></i> <a class="sidebar-a" href="../List of experiments.html">Experiments</a><br/></h2>
 
                 <div class="row">
                     <div class="col-md-2 sidebar-col-2">
@@ -182,8 +189,7 @@
 						Lab">
                             <h3 class="text-h3-darkblue" style="margin-top:
 						2px;">
-						Further
-						Readings </h3> </a>
+						Further Readings </h3> </a>
                         <a class="sidebar-a" href="Feedback.html?domain=Computer
 						Science&amp;lab=Natural
 						Language
@@ -201,37 +207,34 @@
                         <div class="content" id="experiment-article-section-2-content">
                             <p>
                                 Analysis of a word into root and affix(es) is called as Morphological analysis of a word. It is mandatory to identify root of a word for any natural language processing task. A root word can have various forms. For example, the word 'play' in English has the following forms: 'play', 'plays', 'played' and 'playing'. Hindi shows more number of forms for the word 'खेल' (khela) which is equivalent to 'play'. The forms of 'खेल'(khela) are the following:</p>
-                            <br/> खेल(khela), खेला(khelaa), खेली(khelii), खेलूंगा(kheluungaa), खेलूंगी(kheluungii), खेलेगा(khelegaa), खेलेगी(khelegii), खेलते(khelate), खेलती(khelatii), खेलने(khelane), खेलकर(khelakar)
+                            <br/><p> खेल(khela), खेला(khelaa), खेली(khelii), खेलूंगा(kheluungaa), खेलूंगी(kheluungii), खेलेगा(khelegaa), खेलेगी(khelegii), खेलते(khelate), खेलती(khelatii), खेलने(khelane), खेलकर(khelakar)</p>
                             <br/>
-                            <br/> For Telugu root ఆడడం (Adadam), the forms are the following::
+                            <br/><p> For Telugu root ఆడడం (Adadam), the forms are the following::</p>
                             <br/>
-                            <br/> Adutaanu, AdutunnAnu, Adenu, Ademu, AdevA, AdutAru, Adutunnaru, AdadAniki, Adesariki, AdanA, Adinxi, Adutunxi, AdinxA, AdeserA, Adestunnaru, ...
+                            <br/><p> Adutaanu, AdutunnAnu, Adenu, Ademu, AdevA, AdutAru, Adutunnaru, AdadAniki, Adesariki, AdanA, Adinxi, Adutunxi, AdinxA, AdeserA, Adestunnaru, ...</p>
                             <br/>
                             <br/>
                             <p>
                                 Thus we understand that the morphological richness of one language might vary from one language to another. Indian languages are generally morphologically rich languages and therefore morphological analysis of words becomes a very significant task for Indian languages.</p>
                             <br/>
-                            <b>Types of Morphology</b>
+                            <b><p>Types of Morphology</p></b>
+                            
+                            <br/><p> Morphology is of two types,</p>
+                            
+                            <br/><p><b> 1. Inflectional morphology</b></p>
+                            
+                            <br/><p> Deals with word forms of a root, where there is no change in lexical category. For example, 'played' is an inflection of the root word 'play'. Here, both 'played' and 'play' are verbs.</p>
+                            <br/><p><b> 2. Derivational morphology</b></p>
+                            <br/> <p>Deals with word forms of a root, where there is a change in the lexical category. For example, the word form 'happiness' is a derivation of the word 'happy'. Here, 'happiness' is a derived noun form of the adjective 'happy'.</p>
                             <br/>
-                            <br/> Morphology is of two types,
+                            <p><b>Morphological Features:</b></p>
                             <br/>
-                            <br/> 1. Inflectional morphology
-                            <br/>
-                            <br/> Deals with word forms of a root, where there is no change in lexical category. For example, 'played' is an inflection of the root word 'play'. Here, both 'played' and 'play' are verbs.
-                            <br/> 2. Derivational morphology
-                            <br/>
-                            <br/> Deals with word forms of a root, where there is a change in the lexical category. For example, the word form 'happiness' is a derivation of the word 'happy'. Here, 'happiness' is a derived noun form of the adjective 'happy'.
-                            <br/>
-                            <br/>
-                            <b>Morphological Features:</b>
-                            <br/>
-                            <br/> All words will have their lexical category attested during morphological analysis.
-                            <br/> A noun and pronoun can take suffixes of the following features: gender, number, person, case
-                            <br/> For example, morphological analysis of a few words is given below:
-                            <br/>
+                            <br/><p> All words will have their lexical category attested during morphological analysis.</p>
+                            <br/><p> A noun and pronoun can take suffixes of the following features: gender, number, person, case</p>
+                            <br/><p> For example, morphological analysis of a few words is given below:</p>
                             <br/>
                             <table>
-                                <tbody>
+                                <tbody style="border: 1px solid #dddddd; text-align: left; padding: 8px;">
                                     <tr>
                                         <th>Language</th>
                                         <th>input:word</th>
@@ -287,20 +290,16 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/> 'rt' stands for root. 'cat' stands for lexical category. Thev value of lexicat category can be noun, verb, adjective, pronoun, adverb, preposition. 'gen' stands for gender. The value of gender can be masculine or feminine.
-                            <br/> 'num' stands for number. The value of number can be singular (sg) or plural (pl).
-                            <br/> 'per' stands for person. The value of person can be 1, 2 or 3
+                            <br/><p> 'rt' stands for root. 'cat' stands for lexical category. Thev value of lexicat category can be noun, verb, adjective, pronoun, adverb, preposition. 'gen' stands for gender. The value of gender can be masculine or feminine.</p>
+                            <br/> <p>'num' stands for number. The value of number can be singular (sg) or plural (pl).</p>
+                            <br/> <p>'per' stands for person. The value of person can be 1, 2 or 3</p>
                             <br/>
-                            <br/> The value of tense can be present, past or future. This feature is applicable for verbs.
-                            <br/> The value of aspect can be perfect (pft), continuous (cont) or habitual (hab). This feature is not applicable for verbs.
+                            <br/><p> The value of tense can be present, past or future. This feature is applicable for verbs.</p>
+                            <br/><p> The value of aspect can be perfect (pft), continuous (cont) or habitual (hab). This feature is not applicable for verbs.</p>
                             <br/>
-                            <br/> 'case' can be direct or oblique. This feature is applicable for nouns. A case is an oblique case when a postposition occurs after noun. If no postposition can occur after noun, then the case is a direct case. This is applicable for hindi but not english as it doesn't have any postpositions. Some of the postpsitions in hindi are: का(kaa), की(kii), के(ke), को(ko), में(meM)
+                            <br/><p> 'case' can be direct or oblique. This feature is applicable for nouns. A case is an oblique case when a postposition occurs after noun. If no postposition can occur after noun, then the case is a direct case. This is applicable for hindi but not english as it doesn't have any postpositions. Some of the postpsitions in hindi are: का(kaa), की(kii), के(ke), को(ko), में(meM)</p>
                             <br/>
-                            <br/>
-                            <hr/>
-                            <br/>
-                            <br/>
-                            <br/>
+                           
                         </div>
                     </div>
                 </div>
