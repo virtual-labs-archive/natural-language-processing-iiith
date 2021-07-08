@@ -122,10 +122,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	  $("#experiment-article-sections section").hide();
 	  //hide all the experiment sections
 
-	  $("#experiment-article-sections section:first").show();
+	  if (localStorage.getItem("curr-section") === null){
+	  	$("#experiment-article-sections section:first").show();
 	  //show only the first experiment section when
 	  //the experiment page loads
-	  
+	  }
+	  else {
+		sectionId = localStorage.getItem("curr-section");
+    		$("#lab-article-sections #" + sectionId).show();
+	  //show the last clicked page that is stored on the localStorage of the device.
+		  localStorage.removeItem("curr-section");
+ 	  //remove the curr-section variable to reset the system so that the webpage loads to the first page if no page is clicked.
+	  }
+		
 	  $("#experiment-article-navigation ul > li a").live('click',
             function()            
           {	
@@ -135,6 +144,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             // this points to the current element
 	    
 	    sectionId = menuId.replace(/-menu/i, "");
+		  
+	    localStorage.setItem("curr-section",sectionId);
 	    /*
 	    $("#experiment-article-sections-view").html($(
             "#experiment-article-sections #" + 
